@@ -2,6 +2,7 @@ package br.gov.cesarschool.project.unityhub.entidade;
 
 import br.gov.cesarschool.project.unityhub.entidade.geral.Registro;
 
+@SuppressWarnings("serial")
 public class Projeto extends Registro{
 	private String nome;
 	private String celular;

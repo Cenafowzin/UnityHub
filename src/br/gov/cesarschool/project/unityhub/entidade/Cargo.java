@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 public enum Cargo implements Serializable{
 	GERENCIA (1,"Gerencia"), 
-	EMBAIXADOR (2,"Embaixador");
+	EMBAIXADOR (2,"Embaixador"),
+	USUARIO (3,"Usuario");
 	private int codigo;
 	private String nome;
 	private Cargo(int codigo, String nome) {
