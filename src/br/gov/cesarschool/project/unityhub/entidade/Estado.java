@@ -1,6 +1,9 @@
 package br.gov.cesarschool.project.unityhub.entidade;
 
-public class Estado {
+import br.gov.cesarschool.project.unityhub.entidade.geral.Registro;
+
+@SuppressWarnings("serial")
+public class Estado extends Registro{
 	private String nome;
 	private double latitudeCapital;
 	private double longitudeCapital;
@@ -27,6 +30,11 @@ public class Estado {
 
 	public Projeto[] getProjetos() {
 		return projetos;
+	}
+
+	@Override
+	public String getIdUnico() {
+		return nome;
 	}
 	
 }

@@ -1,6 +1,8 @@
 package br.gov.cesarschool.project.unityhub.entidade;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 import br.gov.cesarschool.project.unityhub.entidade.geral.Registro;
 
@@ -76,6 +78,10 @@ public class Colaborador extends Registro{
 	
 	public LocalDateTime getDataDeNascimento() {
 		return dataDeNascimento;
+	}
+	
+	public int calcularIdade() {
+		return (int)ChronoUnit.YEARS.between(dataDeNascimento, LocalDate.now());
 	}
 
 	@Override
