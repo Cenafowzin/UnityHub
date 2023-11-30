@@ -2,6 +2,9 @@ package br.gov.cesarschool.project.unityhub.tela;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+
+import br.gov.cesarschool.project.unityhub.tela.geral.CentralizarTela;
+
 import org.eclipse.swt.widgets.List;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.swt.SWT;
@@ -35,6 +38,7 @@ public class telaGestaoDemanda {
 		createContents();
 		shell.open();
 		shell.layout();
+		CentralizarTela.centralizarJanela(shell);
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();

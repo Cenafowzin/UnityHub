@@ -3,6 +3,9 @@ package br.gov.cesarschool.project.unityhub.tela;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+
+import br.gov.cesarschool.project.unityhub.tela.geral.CentralizarTela;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -55,6 +58,7 @@ public class telaCadastroProjeto {
 		createContents();
 		shell.open();
 		shell.layout();
+		CentralizarTela.centralizarJanela(shell);
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();

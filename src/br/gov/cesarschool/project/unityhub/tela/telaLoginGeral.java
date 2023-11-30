@@ -9,6 +9,8 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import br.gov.cesarschool.project.unityhub.entidade.Cargo;
+import br.gov.cesarschool.project.unityhub.tela.geral.CentralizarTela;
+
 import org.eclipse.wb.swt.SWTResourceManager;
 
 
@@ -37,6 +39,7 @@ public class telaLoginGeral {
 		createContents();
 		shell.open();
 		shell.layout();
+		CentralizarTela.centralizarJanela(shell);
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();

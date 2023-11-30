@@ -3,11 +3,23 @@ package br.gov.cesarschool.project.unityhub.tela;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+
+import br.gov.cesarschool.project.unityhub.entidade.Colaborador;
+import br.gov.cesarschool.project.unityhub.entidade.Estado;
+import br.gov.cesarschool.project.unityhub.negocio.LoginCadastroMediator;
+import br.gov.cesarschool.project.unityhub.tela.geral.CentralizarTela;
+
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.MessageBox;
 
 public class telaCadastroEmbaixador {
 
@@ -25,7 +37,7 @@ public class telaCadastroEmbaixador {
 	private Text generoText;
 	private Text celularText;
 	private Text dataNascText;
-	private Text estadoText;
+	private Combo cmbEstado;
 	private Text cidadeText;
 	private Text cepText;
 	private Text criarSenhaText;
@@ -35,6 +47,8 @@ public class telaCadastroEmbaixador {
 	private Label lblConfirmeSuaSenha;
 	private Label lblCrieUmaSenha;
 	private Button btnVoltar;
+	
+	LoginCadastroMediator mediator = LoginCadastroMediator.getInstancia();
 
 	/**
 	 * Launch the application.
@@ -57,6 +71,7 @@ public class telaCadastroEmbaixador {
 		createContents();
 		shell.open();
 		shell.layout();
+		CentralizarTela.centralizarJanela(shell);
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
@@ -76,14 +91,6 @@ public class telaCadastroEmbaixador {
 		nomeText.setBounds(17, 38, 324, 26);
 		
 		Button btnConcluir = new Button(shell, SWT.NONE);
-		btnConcluir.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-                shell.dispose(); // Fecha a janela atual
-
-                telaPronto newJanela = new telaPronto();
-                newJanela.open(); // Abre a nova janela
-            }
-		});
 		btnConcluir.setBounds(164, 651, 90, 30);
 		btnConcluir.setText("Concluir");
 		
@@ -121,24 +128,50 @@ public class telaCadastroEmbaixador {
 		
 		cpfText = new Text(shell, SWT.BORDER);
 		cpfText.setBounds(16, 94, 324, 26);
+		cpfText.addModifyListener(new ModifyListener() {
+            @Override
+            public void modifyText(ModifyEvent e) {
+                formatarCPF();
+            }
+        });
 		
 		generoText = new Text(shell, SWT.BORDER);
 		generoText.setBounds(19, 153, 324, 26);
 		
 		celularText = new Text(shell, SWT.BORDER);
 		celularText.setBounds(20, 211, 324, 26);
+		celularText.addModifyListener(new ModifyListener() {
+		    @Override
+		    public void modifyText(ModifyEvent e) {
+		        formatarCelular();
+		    }
+		});
 		
 		dataNascText = new Text(shell, SWT.BORDER);
 		dataNascText.setBounds(18, 260, 324, 26);
+		dataNascText.addModifyListener(new ModifyListener() {
+		    @Override
+		    public void modifyText(ModifyEvent e) {
+		        formatarDataNascimento();
+		    }
+		});
 		
-		estadoText = new Text(shell, SWT.BORDER);
-		estadoText.setBounds(14, 320, 324, 26);
+		cmbEstado = new Combo(shell, SWT.NONE);
+	    cmbEstado.setBounds(14, 320, 324, 26);
+	    String[] estados = mediator.listarEstados();
+	    cmbEstado.setItems(estados);
 		
 		cidadeText= new Text(shell, SWT.BORDER);
 		cidadeText.setBounds(20, 382, 128, 26);
 		
 		cepText = new Text(shell, SWT.BORDER);
 		cepText.setBounds(229, 386, 189, 26);
+		cepText.addModifyListener(new ModifyListener() {
+		    @Override
+		    public void modifyText(ModifyEvent e) {
+		        formatarCEP();
+		    }
+		});
 		
 		criarSenhaText = new Text(shell, SWT.BORDER);
 		criarSenhaText.setBounds(20, 517, 128, 26);
@@ -168,12 +201,154 @@ public class telaCadastroEmbaixador {
                 shell.dispose(); // Fecha a janela atual
                 // Agora, abra a tela de login
                 telaLoginGeral loginWindow = new telaLoginGeral();
-                loginWindow.open(); 
+                loginWindow.open();
 			}
 		});
 		btnVoltar.setBounds(377, 10, 45, 30);
 		btnVoltar.setText(" ←");
+		
+		btnConcluir.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				String dataNascString = dataNascText.getText();
+				LocalDate dataNasc = null;
+				if (dataNascString.matches("\\d{2}/\\d{2}/\\d{4}")) {
+					 try {
+				            String[] partesData = dataNascString.split("/");
+				            int dia = Integer.parseInt(partesData[0]);
+				            int mes = Integer.parseInt(partesData[1]);
+				            int ano = Integer.parseInt(partesData[2]);
+				            dataNasc = LocalDate.of(ano, mes, dia);
+				        } catch (DateTimeException e1) {
+				            mostrarMensagemErro("Data de Nascimento inválida!");
+				            return;
+				        }
+				 }
+				Estado estado = mediator.buscarEstado(cmbEstado.getText());
+				if(estado == null){
+					mostrarMensagemErro("Estado inválido");
+				}else {
+					Colaborador colaborador = new Colaborador(cpfText.getText(), nomeText.getText(), celularText.getText(), emailText.getText(), criarSenhaText.getText(), generoText.getText(), 
+							estado, cepText.getText(), cidadeText.getText(), dataNasc);
+					String mensagem = mediator.cadastrarColaborador(colaborador, confirmSenhaText.getText());
+					if(mensagem != null) {
+						mostrarMensagemErro(mensagem);
+					}else {
+						shell.dispose();
+						telaPronto doneWindow = new telaPronto();
+						doneWindow.open();
+					}
+				}
+            }
+		});
 
+	}
+	
+	private void formatarCPF() {
+	    String text = cpfText.getText().replaceAll("[^0-9]", ""); // Remove todos os caracteres que não são números
+
+	    if (text.length() > 11) {
+	        text = text.substring(0, 11);
+	    }
+
+	    StringBuilder formattedCPF = new StringBuilder();
+
+	    int length = text.length();
+	    for (int i = 0; i < length; i++) {
+	        if (i == 3 || i == 6) {
+	            formattedCPF.append('.');
+	        } else if (i == 9) {
+	            formattedCPF.append('-');
+	        }
+	        formattedCPF.append(text.charAt(i));
+	    }
+
+	    // Verifica se o texto formatado é diferente do texto atual antes de definir o texto
+	    if (!formattedCPF.toString().equals(cpfText.getText())) {
+	        cpfText.setText(formattedCPF.toString());
+	        cpfText.setSelection(cpfText.getText().length()); // Coloca o cursor no final do campo
+	    }
+	}
+	
+	private void formatarDataNascimento() {
+	    String text = dataNascText.getText().replaceAll("[^0-9/]", ""); // Remove todos os caracteres que não são números nem a barra
+
+	    if (text.length() > 10) {
+	        text = text.substring(0, 10);
+	    }
+
+	    StringBuilder formattedData = new StringBuilder();
+
+	    int length = text.length();
+	    for (int i = 0; i < length; i++) {
+	        if ((i == 2 || i == 5) && text.charAt(i) != '/') {
+	            formattedData.append('/');
+	        }
+	        formattedData.append(text.charAt(i));
+	    }
+
+	    // Verifica se o texto formatado é diferente do texto atual antes de definir o texto
+	    if (!formattedData.toString().equals(dataNascText.getText())) {
+	        dataNascText.setText(formattedData.toString());
+	        dataNascText.setSelection(dataNascText.getText().length()); // Coloca o cursor no final do campo
+	    }
+	}
+	
+	private void formatarCEP() {
+	    String text = cepText.getText().replaceAll("[^0-9]", ""); // Remove todos os caracteres que não são números
+
+	    if (text.length() > 8) {
+	        text = text.substring(0, 8);
+	    }
+
+	    StringBuilder formattedCEP = new StringBuilder();
+
+	    int length = text.length();
+	    for (int i = 0; i < length; i++) {
+	        if (i == 5) {
+	            formattedCEP.append('-');
+	        }
+	        formattedCEP.append(text.charAt(i));
+	    }
+
+	    // Verifica se o texto formatado é diferente do texto atual antes de definir o texto
+	    if (!formattedCEP.toString().equals(cepText.getText())) {
+	        cepText.setText(formattedCEP.toString());
+	        cepText.setSelection(cepText.getText().length()); // Coloca o cursor no final do campo
+	    }
+	}
+	
+	private void formatarCelular() {
+	    String text = celularText.getText().replaceAll("[^0-9]", ""); // Remove todos os caracteres que não são números
+
+	    if (text.length() > 11) {
+	        text = text.substring(0, 11);
+	    }
+
+	    StringBuilder formattedCelular = new StringBuilder();
+
+	    int length = text.length();
+	    for (int i = 0; i < length; i++) {
+	        if (i == 0) {
+	            formattedCelular.append('(');
+	        } else if (i == 2) {
+	            formattedCelular.append(") ");
+	        } else if (i == 7) {
+	            formattedCelular.append('-');
+	        }
+	        formattedCelular.append(text.charAt(i));
+	    }
+
+	    // Verifica se o texto formatado é diferente do texto atual antes de definir o texto
+	    if (!formattedCelular.toString().equals(celularText.getText())) {
+	        celularText.setText(formattedCelular.toString());
+	        celularText.setSelection(celularText.getText().length()); // Coloca o cursor no final do campo
+	    }
+	}
+	
+	private void mostrarMensagemErro(String mensagem) {
+	    MessageBox messageBox = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
+	    messageBox.setMessage(mensagem);
+	    messageBox.open();
 	}
 
 }

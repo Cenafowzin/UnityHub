@@ -1,7 +1,6 @@
 package br.gov.cesarschool.project.unityhub.entidade;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 import br.gov.cesarschool.project.unityhub.entidade.geral.Registro;
@@ -31,6 +30,7 @@ public class Colaborador extends Registro{
 		this.cep = cep;
 		this.cidade = cidade;
 		this.dataDeNascimento = dataDeNascimento;
+		this.estado = null;
 	}
 	
 	public Colaborador(String cpf, String nomeCompleto, String celular, String email, String senha, String genero,
@@ -86,6 +86,6 @@ public class Colaborador extends Registro{
 
 	@Override
 	public String getIdUnico() {
-		return cpf;
+		return email;
 	}
 }

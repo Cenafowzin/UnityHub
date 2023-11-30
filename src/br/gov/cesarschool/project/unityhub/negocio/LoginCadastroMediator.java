@@ -1,11 +1,11 @@
 package br.gov.cesarschool.project.unityhub.negocio;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-
 import br.gov.cesarschool.project.unityhub.dao.ColaboradorDAO;
+import br.gov.cesarschool.project.unityhub.dao.EstadoDAO;
 import br.gov.cesarschool.project.unityhub.entidade.Colaborador;
+import br.gov.cesarschool.project.unityhub.entidade.Estado;
 import br.gov.cesarschool.project.unityhub.negocio.geral.StringUtil;
 import br.gov.cesarschool.project.unityhub.negocio.geral.ValidadorCPF;
 
@@ -18,40 +18,81 @@ public class LoginCadastroMediator {
 		return instancia;
 	}
 	private ColaboradorDAO repositorioColaborador;
+	private EstadoDAO repositorioEstado;
 	
-	public Colaborador buscar(String cpf) {
-		Colaborador colaborador = repositorioColaborador.buscar(cpf);
+	private LoginCadastroMediator() {
+		this.repositorioColaborador = new ColaboradorDAO();
+		this.repositorioEstado = new EstadoDAO();
+	}
+	
+	public Colaborador buscarColaborador(String email) {
+		Colaborador colaborador = repositorioColaborador.buscar(email);
 		if(colaborador == null) {
 			return null;
 		}
+		
 		return colaborador;
 	}
 	
-	public String logarColaborador(Colaborador colaborador) {
-		String resultado = validarColaborador(colaborador);
-	    if (resultado != null) {
-	      return resultado;
+	public Estado buscarEstado(String nome){
+		Estado estado = repositorioEstado.buscar(nome);
+		if(estado == null) {
+			return null;
+		}
+		
+		return estado;
+	}
+	
+	public String logarColaborador(Colaborador colaborador, String confirmarSenha) {
+		String resultadoValidar = validarColaborador(colaborador);
+	    if (resultadoValidar != null) {
+	      return resultadoValidar;
 	    }
 	    
-	    if (repositorioColaborador.buscar(colaborador.getCpf()) == null) {
-	      return "Usuário não cadastrado";
+	    Colaborador login = repositorioColaborador.buscar(colaborador.getEmail());
+	    String resultadoSenha = compararSenha(colaborador, confirmarSenha);
+	    if(login == null || resultadoSenha != null) {
+	    	return "Login ou senha incorretos";
 	    }
 	    
 	    return null;
 	}
 	
-	public String cadastrarColaborador(Colaborador colaborador) {
+	public String cadastrarColaborador(Colaborador colaborador, String confirmarSenha) {
 		String resultado = validarColaborador(colaborador);
 		if(resultado != null) {
 			return resultado;
 		}
 		
+	    String resultadoSenha = compararSenha(colaborador, confirmarSenha);
+	    if(resultadoSenha != null) {
+	    	return "Senhas incompatíveis";
+	    }
 		boolean incluir = repositorioColaborador.incluir(colaborador);
 	    if (incluir == false) {
 	    	return "Usuário ja existe";
 	    }
 	    
-	    return "Usuário cadastrado com sucesso";
+	    return null;
+	}
+	
+	public String[] listarEstados() {
+		Estado[] estados = repositorioEstado.buscarTodos();
+		String[] nomesEstados = new String[estados.length];
+		
+		for(int i = 0; i < estados.length; i++) {
+			nomesEstados[i] = estados[i].getNome();
+		}
+		
+		return nomesEstados;
+	}
+	
+	private String compararSenha(Colaborador colaborador, String confirmaSenha) {
+		if(confirmaSenha.contentEquals(colaborador.getSenha())) {
+			return null;
+		}
+		
+		return "Login ou senha incorretos";
 	}
 	
 	private String validarColaborador(Colaborador colaborador) {
@@ -61,17 +102,31 @@ public class LoginCadastroMediator {
 			return "CPF invalido";
 		}
 		if (StringUtil.ehNuloOuBranco(colaborador.getNomeCompleto())) {
-			return "Nome completo nao informado";
+			return "Nome completo não informado";
 		}
-		if (colaborador.getGenero() == null) {
-			return "Genero nao informado";
+		if (StringUtil.ehNuloOuBranco(colaborador.getGenero())) {
+			return "Genero não informado";
+		}
+		if(StringUtil.ehNuloOuBranco(colaborador.getCep())) {
+			return "CEP não informado";
 		}
 		if (colaborador.getDataDeNascimento() == null) {
-			return "Data de nascimento nao informada";
+			return "Data de nascimento não informada";
+		}else if (dataNascimentoInvalida(colaborador.getDataDeNascimento())) {
+			return "Data de nascimento inválida";
 		}
-		if (dataNascimentoInvalida(colaborador.getDataDeNascimento())) {
-			return "Data de nascimento invalida";
-		}				
+		if(StringUtil.ehNuloOuBranco(colaborador.getCelular())) {
+			return "Número de celular não informado";
+		}
+		if(StringUtil.ehNuloOuBranco(colaborador.getCidade())) {
+			return "Cidade não informada";
+		}
+		if(StringUtil.ehNuloOuBranco(colaborador.getEmail())) {
+			return "E-mail não informado";
+		}
+		if(StringUtil.ehNuloOuBranco(colaborador.getSenha())) {
+			return "Senha não informada";
+		}
 		return null;
 	}
 	

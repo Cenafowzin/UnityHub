@@ -3,12 +3,13 @@ package br.gov.cesarschool.project.unityhub.tela;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+
+import br.gov.cesarschool.project.unityhub.tela.geral.CentralizarTela;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.jface.resource.LocalResourceManager;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.resource.FontDescriptor;
-import org.eclipse.swt.widgets.Canvas;
-import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -42,6 +43,7 @@ public class telaPronto {
 		createContents();
 		shell.open();
 		shell.layout();
+		CentralizarTela.centralizarJanela(shell);
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
