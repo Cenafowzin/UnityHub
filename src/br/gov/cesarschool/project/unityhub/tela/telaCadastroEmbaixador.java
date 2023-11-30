@@ -77,9 +77,12 @@ public class telaCadastroEmbaixador {
 		
 		Button btnConcluir = new Button(shell, SWT.NONE);
 		btnConcluir.addSelectionListener(new SelectionAdapter() {
-			@Override
 			public void widgetSelected(SelectionEvent e) {
-			}
+                shell.dispose(); // Fecha a janela atual
+
+                telaPronto newJanela = new telaPronto();
+                newJanela.open(); // Abre a nova janela
+            }
 		});
 		btnConcluir.setBounds(164, 651, 90, 30);
 		btnConcluir.setText("Concluir");

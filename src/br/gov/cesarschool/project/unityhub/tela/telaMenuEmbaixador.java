@@ -55,7 +55,12 @@ public class telaMenuEmbaixador {
 		Button btnGestaoDemanda = new Button(shell, SWT.NONE);
 		btnGestaoDemanda.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void widgetSelected(SelectionEvent e) {}
+			public void widgetSelected(SelectionEvent e) {
+				shell.dispose(); // Fecha a janela atual
+
+                telaGestaoDemanda novaJanela4 = new telaGestaoDemanda();
+                novaJanela4.open(); // Abre a nova janela
+			}
 		});
 		btnGestaoDemanda.setBounds(131, 104, 177, 30);
 		btnGestaoDemanda.setText("Gestão de demanda");
