@@ -34,6 +34,7 @@ public class telaCadastroEmbaixador {
 	private Label lblEmail;
 	private Label lblConfirmeSuaSenha;
 	private Label lblCrieUmaSenha;
+	private Button btnVoltar;
 
 	/**
 	 * Launch the application.
@@ -68,7 +69,7 @@ public class telaCadastroEmbaixador {
 	 */
 	protected void createContents() {
 		shell = new Shell();
-		shell.setSize(450, 717);
+		shell.setSize(450, 759);
 		shell.setText("SWT Application");
 		
 		nomeText = new Text(shell, SWT.BORDER);
@@ -80,7 +81,7 @@ public class telaCadastroEmbaixador {
 			public void widgetSelected(SelectionEvent e) {
 			}
 		});
-		btnConcluir.setBounds(159, 630, 90, 30);
+		btnConcluir.setBounds(164, 651, 90, 30);
 		btnConcluir.setText("Concluir");
 		
 		lblCidade = new Label(shell, SWT.NONE);
@@ -143,19 +144,28 @@ public class telaCadastroEmbaixador {
 		emailText.setBounds(17, 459, 350, 26);
 		
 		confirmSenhaText = new Text(shell, SWT.BORDER);
-		confirmSenhaText.setBounds(20, 590, 78, 26);
+		confirmSenhaText.setBounds(17, 603, 78, 26);
 		
 		lblEmail = new Label(shell, SWT.NONE);
 		lblEmail.setBounds(17, 423, 70, 20);
 		lblEmail.setText("e-mail");
 		
 		lblConfirmeSuaSenha = new Label(shell, SWT.NONE);
-		lblConfirmeSuaSenha.setBounds(17, 562, 156, 20);
+		lblConfirmeSuaSenha.setBounds(17, 577, 156, 20);
 		lblConfirmeSuaSenha.setText("confirme sua senha");
 		
 		lblCrieUmaSenha = new Label(shell, SWT.NONE);
 		lblCrieUmaSenha.setBounds(17, 491, 138, 20);
 		lblCrieUmaSenha.setText("crie uma senha");
+		
+		btnVoltar = new Button(shell, SWT.NONE);
+		btnVoltar.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+			}
+		});
+		btnVoltar.setBounds(377, 10, 45, 30);
+		btnVoltar.setText(" ←");
 
 	}
 

@@ -8,7 +8,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
-public class tela2 {
+public class telaMenuEmbaixador {
 
 	protected Shell shell;
 
@@ -18,7 +18,7 @@ public class tela2 {
 	 */
 	public static void main(String[] args) {
 		try {
-			tela2 window = new tela2();
+			telaMenuEmbaixador window = new telaMenuEmbaixador();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();

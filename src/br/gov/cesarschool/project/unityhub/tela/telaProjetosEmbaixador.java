@@ -11,11 +11,11 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.List;
 
-public class tela3 {
+public class telaProjetosEmbaixador {
 
 	protected Shell shell;
-	private Text text;
-	private Label lblFazer;
+	private Text buscar;
+	private Label lblProjetos;
 
 	/**
 	 * Launch the application.
@@ -23,7 +23,7 @@ public class tela3 {
 	 */
 	public static void main(String[] args) {
 		try {
-			tela3 window = new tela3();
+			telaProjetosEmbaixador window = new telaProjetosEmbaixador();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -53,8 +53,8 @@ public class tela3 {
 		shell.setSize(450, 528);
 		shell.setText("SWT Application");
 		
-		text = new Text(shell, SWT.BORDER);
-		text.setBounds(99, 21, 212, 26);
+		buscar = new Text(shell, SWT.BORDER);
+		buscar.setBounds(99, 21, 212, 26);
 		
 		Button btnBuscar = new Button(shell, SWT.NONE);
 		btnBuscar.addSelectionListener(new SelectionAdapter() {
@@ -65,12 +65,12 @@ public class tela3 {
 		btnBuscar.setBounds(317, 19, 46, 30);
 		btnBuscar.setText("🔍︎");
 		
-		lblFazer = new Label(shell, SWT.NONE);
-		lblFazer.setBounds(173, 74, 70, 20);
-		lblFazer.setText("A Fazer");
+		lblProjetos = new Label(shell, SWT.NONE);
+		lblProjetos.setBounds(173, 74, 70, 20);
+		lblProjetos.setText("Projetos");
 		
 		List list = new List(shell, SWT.BORDER);
-		list.setBounds(98, 116, 236, 310);
+		list.setBounds(98, 116, 236, 80);
 
 	}
 }
