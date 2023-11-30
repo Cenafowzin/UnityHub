@@ -17,10 +17,10 @@ public class Colaborador extends Registro{
 	private Estado estado;
 	private String cep;
 	private String cidade;
-	private LocalDateTime dataDeNascimento;
+	private LocalDate dataDeNascimento;
 	
 	public Colaborador(String cpf, String nomeCompleto, String celular, String email, String senha, String genero, 
-			String cep, String cidade, LocalDateTime dataDeNascimento) {
+			String cep, String cidade, LocalDate dataDeNascimento) {
 		super();
 		this.cpf = cpf;
 		this.nomeCompleto = nomeCompleto;
@@ -34,7 +34,7 @@ public class Colaborador extends Registro{
 	}
 	
 	public Colaborador(String cpf, String nomeCompleto, String celular, String email, String senha, String genero,
-			Estado estado, String cep, String cidade, LocalDateTime dataDeNascimento) {
+			Estado estado, String cep, String cidade, LocalDate dataDeNascimento) {
 		this(cpf, nomeCompleto, celular, email, senha, genero, cep, cidade ,dataDeNascimento);
 		
 		this.estado = estado;
@@ -76,7 +76,7 @@ public class Colaborador extends Registro{
 		return cidade;
 	}
 	
-	public LocalDateTime getDataDeNascimento() {
+	public LocalDate getDataDeNascimento() {
 		return dataDeNascimento;
 	}
 	
