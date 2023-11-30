@@ -3,11 +3,21 @@ package br.gov.cesarschool.project.unityhub.tela;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+
+import br.gov.cesarschool.project.unityhub.entidade.Colaborador;
+import br.gov.cesarschool.project.unityhub.negocio.LoginCadastroMediator;
+
+import java.awt.event.MouseEvent;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.MessageBox;
 
 public class telaCadastroEmbaixador {
 
@@ -48,6 +58,8 @@ public class telaCadastroEmbaixador {
 			e.printStackTrace();
 		}
 	}
+	
+	private LoginCadastroMediator mediator = LoginCadastroMediator.getInstancia();
 
 	/**
 	 * Open the window.
@@ -158,6 +170,43 @@ public class telaCadastroEmbaixador {
 		lblCrieUmaSenha.setBounds(17, 491, 138, 20);
 		lblCrieUmaSenha.setText("crie uma senha");
 		
+<<<<<<< HEAD
+		String dataNascimento = lblDataDeNascimento.getText();
+		LocalDate dataNasc;
+		if (dataNascimento.matches("\\d{2}/\\d{2}/\\d{4}")) {
+			 try {
+		            String[] partesData = dataNascimento.split("/");
+		            int dia = Integer.parseInt(partesData[0]);
+		            int mes = Integer.parseInt(partesData[1]);
+		            int ano = Integer.parseInt(partesData[2]);
+		            dataNasc = LocalDate.of(ano, mes, dia);
+		        } catch (DateTimeException e) {
+		            mostrarMensagemErro("Data de Nascimento inválida!");
+		            return;
+		        }
+		 } else {
+		     mostrarMensagemErro("Formato do campo Data de Nascimento inválido!");
+		     return;
+		 }
+		
+		btnConcluir.addMouseListener(new MouseAdapter() {
+			public void mouseDown(MouseEvent e) {
+				String cpf = lblCpf.getText();
+				Colaborador colaborador = mediator.buscar(cpf);
+				if(colaborador != null) {
+					mostrarMensagemErro("Usuário já existe");
+				}
+				
+				Colaborador cadastro = new Colaborador(lblCpf.getText(), lblNomeCompleto.getText(), lblCelular.getText(), lblEmail.getText(),
+						criarSenhaText.getText(), generoText.getText(), lblCep.getText(), lblCidade.getText(), dataNasc);
+				mediator.cadastrarColaborador(cadastro);
+				
+				
+			}
+		});
+		
+		
+=======
 		btnVoltar = new Button(shell, SWT.NONE);
 		btnVoltar.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -170,7 +219,13 @@ public class telaCadastroEmbaixador {
 		});
 		btnVoltar.setBounds(377, 10, 45, 30);
 		btnVoltar.setText(" ←");
+>>>>>>> 0e1d06485a8233057f2736b521954a00b4338e14
 
 	}
 
+	private void mostrarMensagemErro(String mensagem) {
+		MessageBox messageBox = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
+		messageBox.setMessage(mensagem);
+		messageBox.open();
+	}
 }

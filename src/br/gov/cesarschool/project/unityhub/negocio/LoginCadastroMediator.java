@@ -19,7 +19,15 @@ public class LoginCadastroMediator {
 	}
 	private ColaboradorDAO repositorioColaborador;
 	
-	private String logarColaborador(Colaborador colaborador) {
+	public Colaborador buscar(String cpf) {
+		Colaborador colaborador = repositorioColaborador.buscar(cpf);
+		if(colaborador == null) {
+			return null;
+		}
+		return colaborador;
+	}
+	
+	public String logarColaborador(Colaborador colaborador) {
 		String resultado = validarColaborador(colaborador);
 	    if (resultado != null) {
 	      return resultado;
@@ -32,7 +40,7 @@ public class LoginCadastroMediator {
 	    return null;
 	}
 	
-	private String cadastrarColaborador(Colaborador colaborador) {
+	public String cadastrarColaborador(Colaborador colaborador) {
 		String resultado = validarColaborador(colaborador);
 		if(resultado != null) {
 			return resultado;
@@ -67,7 +75,7 @@ public class LoginCadastroMediator {
 		return null;
 	}
 	
-	private boolean dataNascimentoInvalida(LocalDateTime dataNascimento) {
+	private boolean dataNascimentoInvalida(LocalDate dataNascimento) {
 		long yearsDifference = ChronoUnit.YEARS.between(dataNascimento, LocalDate.now());
 		return yearsDifference < 18;
 	}
