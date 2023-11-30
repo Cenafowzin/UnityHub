@@ -16,6 +16,7 @@ public class telaProjetosEmbaixador {
 	protected Shell shell;
 	private Text buscar;
 	private Label lblProjetos;
+	private Button btnVoltar;
 
 	/**
 	 * Launch the application.
@@ -57,11 +58,6 @@ public class telaProjetosEmbaixador {
 		buscar.setBounds(99, 21, 212, 26);
 		
 		Button btnBuscar = new Button(shell, SWT.NONE);
-		btnBuscar.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-			}
-		});
 		btnBuscar.setBounds(317, 19, 46, 30);
 		btnBuscar.setText("🔍︎");
 		
@@ -71,6 +67,19 @@ public class telaProjetosEmbaixador {
 		
 		List list = new List(shell, SWT.BORDER);
 		list.setBounds(98, 116, 236, 80);
+		
+		btnVoltar = new Button(shell, SWT.NONE);
+		btnVoltar.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+                shell.dispose(); // Fecha a janela atual
+
+                telaMenuEmbaixador novaJanela = new telaMenuEmbaixador();
+                novaJanela.open(); // Abre a nova janela
+            }
+		});
+		btnVoltar.setBounds(10, 19, 46, 30);
+		btnVoltar.setText(" ←");
 
 	}
 }

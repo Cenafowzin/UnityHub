@@ -55,8 +55,7 @@ public class telaMenuEmbaixador {
 		Button btnGestaoDemanda = new Button(shell, SWT.NONE);
 		btnGestaoDemanda.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void widgetSelected(SelectionEvent e) {
-			}
+			public void widgetSelected(SelectionEvent e) {}
 		});
 		btnGestaoDemanda.setBounds(131, 104, 177, 30);
 		btnGestaoDemanda.setText("Gestão de demanda");
@@ -65,6 +64,10 @@ public class telaMenuEmbaixador {
 		btnGestaoProjetos.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				shell.dispose(); // Fecha a janela atual
+
+                telaProjetosEmbaixador novaJanela2 = new telaProjetosEmbaixador();
+                novaJanela2.open(); // Abre a nova janela
 			}
 		});
 		btnGestaoProjetos.setBounds(126, 175, 182, 30);
@@ -74,10 +77,17 @@ public class telaMenuEmbaixador {
 		btnVoltar.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+                shell.dispose(); // Fecha a janela atual
+                // Agora, abra a tela de login
+                telaLoginGeral loginWindow = new telaLoginGeral();
+                loginWindow.open(); 
 			}
 		});
 		btnVoltar.setBounds(10, 10, 29, 30);
 		btnVoltar.setText(" ←");
+		
+		
+		
 
 	}
 }

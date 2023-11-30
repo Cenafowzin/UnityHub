@@ -162,6 +162,10 @@ public class telaCadastroEmbaixador {
 		btnVoltar.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+                shell.dispose(); // Fecha a janela atual
+                // Agora, abra a tela de login
+                telaLoginGeral loginWindow = new telaLoginGeral();
+                loginWindow.open(); 
 			}
 		});
 		btnVoltar.setBounds(377, 10, 45, 30);
