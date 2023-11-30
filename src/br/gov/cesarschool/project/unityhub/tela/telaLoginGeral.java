@@ -11,7 +11,7 @@ import org.eclipse.swt.widgets.Text;
 import br.gov.cesarschool.project.unityhub.entidade.Cargo;
 
 
-public class tela1 {
+public class telaLoginGeral {
 
 	protected Shell shell;
 
@@ -21,7 +21,7 @@ public class tela1 {
 	 */
 	public static void main(String[] args) {
 		try {
-			tela1 window = new tela1();
+			telaLoginGeral window = new telaLoginGeral();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,7 +67,7 @@ public class tela1 {
             public void widgetSelected(SelectionEvent e) {
                 shell.dispose(); // Fecha a janela atual
 
-                tela2 novaJanela = new tela2();
+                telaMenuEmbaixador novaJanela = new telaMenuEmbaixador();
                 novaJanela.open(); // Abre a nova janela
             }
         });
