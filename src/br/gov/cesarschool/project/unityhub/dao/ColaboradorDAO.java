@@ -8,15 +8,19 @@ public class ColaboradorDAO {
 	public ColaboradorDAO() {
         this.dao = new DAOGenerico(Colaborador.class);
     }
+	
 	public boolean incluir(Colaborador colaborador) {
 		return dao.incluir(colaborador);
 	}
+	
 	public boolean alterar(Colaborador colaborador) {
 		return dao.alterar(colaborador);	
 	}
+	
 	public Colaborador buscar(String codigo) {
 		return (Colaborador) dao.buscar(codigo);
 	}
+	
 	public Colaborador[] buscarTodos() {
 		Registro[] registros = dao.buscarTodos();
 		Colaborador[] colaboradores = new Colaborador[registros.length];
