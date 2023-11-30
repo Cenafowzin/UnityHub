@@ -9,7 +9,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
 
-public class telaLogin {
+public class telaCadastroEmbaixador {
 
 	protected Shell shell;
 	private Text nomeText;
@@ -28,6 +28,12 @@ public class telaLogin {
 	private Text estadoText;
 	private Text cidadeText;
 	private Text cepText;
+	private Text criarSenhaText;
+	private Text emailText;
+	private Text confirmSenhaText;
+	private Label lblEmail;
+	private Label lblConfirmeSuaSenha;
+	private Label lblCrieUmaSenha;
 
 	/**
 	 * Launch the application.
@@ -35,7 +41,7 @@ public class telaLogin {
 	 */
 	public static void main(String[] args) {
 		try {
-			telaLogin window = new telaLogin();
+			telaCadastroEmbaixador window = new telaCadastroEmbaixador();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,20 +68,20 @@ public class telaLogin {
 	 */
 	protected void createContents() {
 		shell = new Shell();
-		shell.setSize(450, 523);
+		shell.setSize(450, 717);
 		shell.setText("SWT Application");
 		
 		nomeText = new Text(shell, SWT.BORDER);
 		nomeText.setBounds(17, 38, 324, 26);
 		
-		Button btnCadastro = new Button(shell, SWT.NONE);
-		btnCadastro.addSelectionListener(new SelectionAdapter() {
+		Button btnConcluir = new Button(shell, SWT.NONE);
+		btnConcluir.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 			}
 		});
-		btnCadastro.setBounds(153, 425, 90, 30);
-		btnCadastro.setText("Avançar");
+		btnConcluir.setBounds(159, 630, 90, 30);
+		btnConcluir.setText("Concluir");
 		
 		lblCidade = new Label(shell, SWT.NONE);
 		lblCidade.setBounds(20, 361, 70, 20);
@@ -129,6 +135,27 @@ public class telaLogin {
 		
 		cepText = new Text(shell, SWT.BORDER);
 		cepText.setBounds(229, 386, 189, 26);
+		
+		criarSenhaText = new Text(shell, SWT.BORDER);
+		criarSenhaText.setBounds(20, 517, 128, 26);
+		
+		emailText = new Text(shell, SWT.BORDER);
+		emailText.setBounds(17, 459, 350, 26);
+		
+		confirmSenhaText = new Text(shell, SWT.BORDER);
+		confirmSenhaText.setBounds(20, 590, 78, 26);
+		
+		lblEmail = new Label(shell, SWT.NONE);
+		lblEmail.setBounds(17, 423, 70, 20);
+		lblEmail.setText("e-mail");
+		
+		lblConfirmeSuaSenha = new Label(shell, SWT.NONE);
+		lblConfirmeSuaSenha.setBounds(17, 562, 156, 20);
+		lblConfirmeSuaSenha.setText("confirme sua senha");
+		
+		lblCrieUmaSenha = new Label(shell, SWT.NONE);
+		lblCrieUmaSenha.setBounds(17, 491, 138, 20);
+		lblCrieUmaSenha.setText("crie uma senha");
 
 	}
 

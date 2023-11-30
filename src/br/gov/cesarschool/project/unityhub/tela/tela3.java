@@ -15,7 +15,7 @@ public class tela3 {
 
 	protected Shell shell;
 	private Text text;
-	private Label lblProjetos;
+	private Label lblFazer;
 
 	/**
 	 * Launch the application.
@@ -65,9 +65,9 @@ public class tela3 {
 		btnBuscar.setBounds(317, 19, 46, 30);
 		btnBuscar.setText("🔍︎");
 		
-		lblProjetos = new Label(shell, SWT.NONE);
-		lblProjetos.setBounds(173, 74, 70, 20);
-		lblProjetos.setText("Projetos");
+		lblFazer = new Label(shell, SWT.NONE);
+		lblFazer.setBounds(173, 74, 70, 20);
+		lblFazer.setText("A Fazer");
 		
 		List list = new List(shell, SWT.BORDER);
 		list.setBounds(98, 116, 236, 310);

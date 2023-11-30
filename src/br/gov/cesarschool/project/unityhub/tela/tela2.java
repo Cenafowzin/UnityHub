@@ -48,22 +48,27 @@ public class tela2 {
 		shell.setSize(450, 300);
 		shell.setText("SWT Application");
 		
-		Label lblBemVindoColaborador = new Label(shell, SWT.NONE);
-		lblBemVindoColaborador.setBounds(140, 45, 168, 27);
-		lblBemVindoColaborador.setText("Bem-vindo colaborador");
+		Label lblBemVindoEmabaixador = new Label(shell, SWT.NONE);
+		lblBemVindoEmabaixador.setBounds(140, 45, 168, 27);
+		lblBemVindoEmabaixador.setText("Bem-vindo embaixador");
 		
-		Button btnNewButton = new Button(shell, SWT.NONE);
-		btnNewButton.addSelectionListener(new SelectionAdapter() {
+		Button btnGestaoDemanda = new Button(shell, SWT.NONE);
+		btnGestaoDemanda.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(131, 104, 177, 30);
-		btnNewButton.setText("Gestão de embaixadores");
+		btnGestaoDemanda.setBounds(131, 104, 177, 30);
+		btnGestaoDemanda.setText("Gestão de demanda");
 		
-		Button btnNewButton_1 = new Button(shell, SWT.NONE);
-		btnNewButton_1.setBounds(126, 175, 182, 30);
-		btnNewButton_1.setText("Gestão de projetos");
+		Button btnGestaoProjetos = new Button(shell, SWT.NONE);
+		btnGestaoProjetos.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+			}
+		});
+		btnGestaoProjetos.setBounds(126, 175, 182, 30);
+		btnGestaoProjetos.setText("Gestão de projetos");
 		
 		Button btnVoltar = new Button(shell, SWT.NONE);
 		btnVoltar.addSelectionListener(new SelectionAdapter() {
