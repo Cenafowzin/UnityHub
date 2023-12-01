@@ -13,6 +13,10 @@ public class ColaboradorDAO {
 		return dao.incluir(colaborador);
 	}
 	
+	public boolean excluir(Colaborador colaborador) {
+		return dao.excluir(colaborador);
+	}
+	
 	public boolean alterar(Colaborador colaborador) {
 		return dao.alterar(colaborador);	
 	}

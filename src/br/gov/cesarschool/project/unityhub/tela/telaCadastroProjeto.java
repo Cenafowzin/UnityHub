@@ -3,6 +3,9 @@ package br.gov.cesarschool.project.unityhub.tela;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+
+import br.gov.cesarschool.project.unityhub.entidade.Colaborador;
+import br.gov.cesarschool.project.unityhub.negocio.LoginCadastroMediator;
 import br.gov.cesarschool.project.unityhub.tela.geral.TelaUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
@@ -12,7 +15,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 
 public class telaCadastroProjeto {
-
+	
+	private Colaborador colaborador;
 	protected Shell shell;
 	private Text nomeText;
 	private Label lblCidade;
@@ -31,20 +35,13 @@ public class telaCadastroProjeto {
 	private Button btnVoltar;
 	private Text descricaoTexto;
 	private Text necessidadesText;
-
-	/**
-	 * Launch the application.
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		try {
-			telaCadastroProjeto window = new telaCadastroProjeto();
-			window.open();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	
+	
+	public telaCadastroProjeto(Colaborador colaborador) {
+		this.colaborador = colaborador;
 	}
-
+	
+	LoginCadastroMediator mediator = LoginCadastroMediator.getInstancia();
 	/**
 	 * Open the window.
 	 */
@@ -122,6 +119,10 @@ public class telaCadastroProjeto {
 		btnVoltar.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				mediator.excluirColaborador(colaborador);
+				shell.dispose();
+                telaCadastroEmbaixador novaJanela = new telaCadastroEmbaixador();
+                novaJanela.open();
 			}
 		});
 		btnVoltar.setBounds(360, 10, 45, 30);

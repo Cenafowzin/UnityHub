@@ -144,7 +144,7 @@ public class telaLoginGeral {
             			shell.dispose();
             		}else if(colaborador.getCargo() == Cargo.EMBAIXADOR) {
             			shell.dispose();
-            			telaMenuEmbaixador novaJanela = new telaMenuEmbaixador();
+            			telaMenuEmbaixador novaJanela = new telaMenuEmbaixador(colaborador);
             			novaJanela.open();            			
             		}else {
             			TelaUtils.mostrarMensagemErro("Random", shell);

@@ -2,6 +2,8 @@ package br.gov.cesarschool.project.unityhub.tela;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+
+import br.gov.cesarschool.project.unityhub.entidade.Colaborador;
 import br.gov.cesarschool.project.unityhub.tela.geral.TelaUtils;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.SWT;
@@ -10,8 +12,13 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
 public class telaMenuEmbaixador {
-
+	
+	private Colaborador colaborador;
 	protected Shell shell;
+	
+	public telaMenuEmbaixador(Colaborador colaborador) {
+		this.colaborador = colaborador;
+	}
 
 	/**
 	 * Launch the application.
@@ -19,7 +26,7 @@ public class telaMenuEmbaixador {
 	 */
 	public static void main(String[] args) {
 		try {
-			telaMenuEmbaixador window = new telaMenuEmbaixador();
+			telaMenuEmbaixador window = new telaMenuEmbaixador(null);
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,9 +57,11 @@ public class telaMenuEmbaixador {
 		shell.setSize(450, 300);
 		shell.setText("SWT Application");
 		
-		Label lblBemVindoEmabaixador = new Label(shell, SWT.NONE);
+		Label lblBemVindoEmabaixador = new Label(shell, SWT.CENTER);
 		lblBemVindoEmabaixador.setBounds(140, 45, 168, 27);
-		lblBemVindoEmabaixador.setText("Bem-vindo embaixador");
+		String[] partesNome = colaborador.getNomeCompleto().split(" ");
+		String primeiroNome = partesNome[0];
+		lblBemVindoEmabaixador.setText("Bem-vindo\n" + primeiroNome);
 		
 		Button btnGestaoDemanda = new Button(shell, SWT.NONE);
 		btnGestaoDemanda.addSelectionListener(new SelectionAdapter() {

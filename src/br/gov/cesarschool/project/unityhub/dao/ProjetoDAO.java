@@ -11,6 +11,9 @@ public class ProjetoDAO {
 	public boolean incluir(Projeto caixaBonus) {
 		return dao.incluir(caixaBonus);
 	}
+	public boolean excluir(Projeto caixaBonus) {
+		return dao.excluir(caixaBonus);
+	}
 	public boolean alterar(Projeto caixaBonus) {
 		return dao.alterar(caixaBonus);	
 	}

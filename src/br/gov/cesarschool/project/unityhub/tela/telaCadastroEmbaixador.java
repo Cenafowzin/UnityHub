@@ -242,9 +242,16 @@ public class telaCadastroEmbaixador {
 					if(mensagem != null) {
 						TelaUtils.mostrarMensagemErro(mensagem, shell);
 					}else {
-						shell.dispose();
-						telaPronto doneWindow = new telaPronto();
-						doneWindow.open();
+						if(cargoSelecionado == Cargo.USUARIO) {
+							shell.dispose();
+							telaCadastroProjeto telaProjeto = new telaCadastroProjeto(colaborador);
+							telaProjeto.open();
+							
+						}else {
+							shell.dispose();
+							telaPronto doneWindow = new telaPronto();
+							doneWindow.open();			
+						}
 					}
 				}
             }

@@ -11,6 +11,11 @@ public class EstadoDAO {
 	public boolean incluir(Estado estado) {
 		return dao.incluir(estado);
 	}
+	
+	public boolean excluir(Estado estado) {
+		return dao.excluir(estado);
+	}
+	
 	public boolean alterar(Estado estado) {
 		return dao.alterar(estado);	
 	}

@@ -3,6 +3,8 @@ package br.gov.cesarschool.project.unityhub.tela;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+
+import br.gov.cesarschool.project.unityhub.entidade.Colaborador;
 import br.gov.cesarschool.project.unityhub.tela.geral.TelaUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
@@ -12,7 +14,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 
 public class telaProjetosEmbaixador {
-
+	
+	private Colaborador logado;
 	protected Shell shell;
 	private Text buscar;
 	private Label lblProjetos;
@@ -75,7 +78,7 @@ public class telaProjetosEmbaixador {
 			public void widgetSelected(SelectionEvent e) {
                 shell.dispose(); // Fecha a janela atual
 
-                telaMenuEmbaixador novaJanela = new telaMenuEmbaixador();
+                telaMenuEmbaixador novaJanela = new telaMenuEmbaixador(logado);
                 novaJanela.open(); // Abre a nova janela
             }
 		});

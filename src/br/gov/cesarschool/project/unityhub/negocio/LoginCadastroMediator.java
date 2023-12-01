@@ -34,6 +34,14 @@ public class LoginCadastroMediator {
 		return colaborador;
 	}
 	
+	public String excluirColaborador(Colaborador colaborador) {
+		if(repositorioColaborador.excluir(colaborador)) {
+			return null;
+		}
+		
+		return "Falha na exclusão";
+	}
+	
 	public Estado buscarEstado(String nome){
 		Estado estado = repositorioEstado.buscar(nome);
 		if(estado == null) {

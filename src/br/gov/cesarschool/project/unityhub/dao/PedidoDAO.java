@@ -11,6 +11,9 @@ public class PedidoDAO {
 	public boolean incluir(Pedido pedido) {
 		return dao.incluir(pedido);
 	}
+	public boolean excluir(Pedido pedido) {
+		return dao.excluir(pedido);
+	}
 	public boolean alterar(Pedido pedido) {
 		return dao.alterar(pedido);	
 	}

@@ -23,6 +23,16 @@ public class DAOGenerico {
 		}
 	}
 	
+	public boolean excluir(Registro reg) {
+		Registro novo = buscar(reg.getIdUnico());
+		if (novo == null) {
+			return false;
+		} else {
+			cadastro.excluir(reg.getIdUnico());
+			return true;
+		}
+	}
+	
 	public boolean alterar(Registro reg) {
 		Registro novo = buscar(reg.getIdUnico());
 		if (novo == null) {

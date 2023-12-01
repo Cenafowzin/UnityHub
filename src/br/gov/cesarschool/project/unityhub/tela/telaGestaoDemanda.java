@@ -65,7 +65,7 @@ public class telaGestaoDemanda {
 			public void widgetSelected(SelectionEvent e) {
                 shell.dispose(); // Fecha a janela atual
 
-                telaMenuEmbaixador novaJanela = new telaMenuEmbaixador();
+                telaMenuEmbaixador novaJanela = new telaMenuEmbaixador(null);
                 novaJanela.open(); // Abre a nova janela
             }
 		});
