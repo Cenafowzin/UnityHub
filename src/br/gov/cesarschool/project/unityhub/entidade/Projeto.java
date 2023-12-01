@@ -9,14 +9,20 @@ public class Projeto extends Registro{
 	private String email;
 	private String descricao;
 	private String cep;
+	private Prioridade prioridade;
 
-	public Projeto(String nome, String celular, String email, String descricao, String cep) {
+	public Projeto(String nome, String celular, String email, String descricao, String cep, Prioridade prioridade) {
 		super();
 		this.nome = nome;
 		this.celular = celular;
 		this.email = email;
 		this.descricao = descricao;
 		this.cep = cep;
+		this.prioridade = prioridade;
+	}
+
+	public Prioridade getPrioridade() {
+		return prioridade;
 	}
 
 	public String getNome() {

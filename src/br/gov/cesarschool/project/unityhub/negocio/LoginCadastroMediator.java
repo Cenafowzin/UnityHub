@@ -44,6 +44,9 @@ public class LoginCadastroMediator {
 	}
 	
 	public String logarColaborador(Colaborador colaborador, String confirmarSenha) {
+		if(colaborador == null) {
+			return "Login ou senha incorretos";
+		}
 		String resultadoValidar = validarColaborador(colaborador);
 	    if (resultadoValidar != null) {
 	      return resultadoValidar;
@@ -126,6 +129,9 @@ public class LoginCadastroMediator {
 		}
 		if(StringUtil.ehNuloOuBranco(colaborador.getSenha())) {
 			return "Senha não informada";
+		}
+		if(colaborador.getCargo() == null) {
+			return "Cargo não selecionado";
 		}
 		return null;
 	}

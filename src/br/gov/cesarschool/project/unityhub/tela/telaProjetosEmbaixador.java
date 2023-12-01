@@ -3,15 +3,12 @@ package br.gov.cesarschool.project.unityhub.tela;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-
-import br.gov.cesarschool.project.unityhub.tela.geral.CentralizarTela;
-
+import br.gov.cesarschool.project.unityhub.tela.geral.TelaUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.List;
 
 public class telaProjetosEmbaixador {
@@ -42,7 +39,7 @@ public class telaProjetosEmbaixador {
 		createContents();
 		shell.open();
 		shell.layout();
-		CentralizarTela.centralizarJanela(shell);
+		TelaUtils.centralizarJanela(shell);
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();

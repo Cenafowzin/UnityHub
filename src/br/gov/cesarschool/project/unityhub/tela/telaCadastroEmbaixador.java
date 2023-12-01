@@ -3,12 +3,11 @@ package br.gov.cesarschool.project.unityhub.tela;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-
+import br.gov.cesarschool.project.unityhub.entidade.Cargo;
 import br.gov.cesarschool.project.unityhub.entidade.Colaborador;
 import br.gov.cesarschool.project.unityhub.entidade.Estado;
 import br.gov.cesarschool.project.unityhub.negocio.LoginCadastroMediator;
-import br.gov.cesarschool.project.unityhub.tela.geral.CentralizarTela;
-
+import br.gov.cesarschool.project.unityhub.tela.geral.TelaUtils;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import org.eclipse.swt.events.ModifyEvent;
@@ -19,7 +18,6 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.MessageBox;
 
 public class telaCadastroEmbaixador {
 
@@ -33,11 +31,13 @@ public class telaCadastroEmbaixador {
 	private Label lblGnero;
 	private Label lblDataDeNascimento;
 	private Label lblCelular;
+	private Label lblCargo;
 	private Text cpfText;
 	private Text generoText;
 	private Text celularText;
 	private Text dataNascText;
 	private Combo cmbEstado;
+	private Combo cmbCargo;
 	private Text cidadeText;
 	private Text cepText;
 	private Text criarSenhaText;
@@ -71,7 +71,7 @@ public class telaCadastroEmbaixador {
 		createContents();
 		shell.open();
 		shell.layout();
-		CentralizarTela.centralizarJanela(shell);
+		TelaUtils.centralizarJanela(shell);
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
@@ -156,9 +156,9 @@ public class telaCadastroEmbaixador {
 		    }
 		});
 		
-		cmbEstado = new Combo(shell, SWT.NONE);
+		String[] estados = mediator.listarEstados();
+		cmbEstado = new Combo(shell, SWT.READ_ONLY);
 	    cmbEstado.setBounds(14, 320, 324, 26);
-	    String[] estados = mediator.listarEstados();
 	    cmbEstado.setItems(estados);
 		
 		cidadeText= new Text(shell, SWT.BORDER);
@@ -172,6 +172,10 @@ public class telaCadastroEmbaixador {
 		        formatarCEP();
 		    }
 		});
+		
+		cmbCargo = new Combo(shell, SWT.READ_ONLY);
+        cmbCargo.setBounds(245, 517, 128, 26);
+        cmbCargo.setItems(getNomesCargos());
 		
 		criarSenhaText = new Text(shell, SWT.BORDER);
 		criarSenhaText.setBounds(20, 517, 128, 26);
@@ -193,6 +197,10 @@ public class telaCadastroEmbaixador {
 		lblCrieUmaSenha = new Label(shell, SWT.NONE);
 		lblCrieUmaSenha.setBounds(17, 491, 138, 20);
 		lblCrieUmaSenha.setText("crie uma senha");
+		
+		lblCargo = new Label(shell, SWT.NONE);
+		lblCargo.setBounds(245, 491, 138, 20);
+		lblCargo.setText("Cargo");
 		
 		btnVoltar = new Button(shell, SWT.NONE);
 		btnVoltar.addSelectionListener(new SelectionAdapter() {
@@ -219,19 +227,20 @@ public class telaCadastroEmbaixador {
 				            int ano = Integer.parseInt(partesData[2]);
 				            dataNasc = LocalDate.of(ano, mes, dia);
 				        } catch (DateTimeException e1) {
-				            mostrarMensagemErro("Data de Nascimento inválida!");
+				        	TelaUtils.mostrarMensagemErro("Data de Nascimento inválida!", shell);
 				            return;
 				        }
 				 }
 				Estado estado = mediator.buscarEstado(cmbEstado.getText());
+				Cargo cargoSelecionado = obterCargoSelecionado();
 				if(estado == null){
-					mostrarMensagemErro("Estado inválido");
+					TelaUtils.mostrarMensagemErro("Estado não selecionado", shell);
 				}else {
 					Colaborador colaborador = new Colaborador(cpfText.getText(), nomeText.getText(), celularText.getText(), emailText.getText(), criarSenhaText.getText(), generoText.getText(), 
-							estado, cepText.getText(), cidadeText.getText(), dataNasc);
+							estado, cepText.getText(), cidadeText.getText(), dataNasc, cargoSelecionado);
 					String mensagem = mediator.cadastrarColaborador(colaborador, confirmSenhaText.getText());
 					if(mensagem != null) {
-						mostrarMensagemErro(mensagem);
+						TelaUtils.mostrarMensagemErro(mensagem, shell);
 					}else {
 						shell.dispose();
 						telaPronto doneWindow = new telaPronto();
@@ -242,6 +251,30 @@ public class telaCadastroEmbaixador {
 		});
 
 	}
+	
+	private String[] getNomesCargos() {
+        Cargo[] cargos = Cargo.values();
+        String[] nomesCargos = new String[cargos.length];
+
+        for (int i = 0; i < cargos.length; i++) {
+            nomesCargos[i] = cargos[i].getNome();
+        }
+
+        return nomesCargos;
+    }
+
+    private Cargo obterCargoSelecionado() {
+        int indiceSelecionado = cmbCargo.getSelectionIndex();
+        if (indiceSelecionado != -1) {
+            String nomeCargo = cmbCargo.getItem(indiceSelecionado);
+            for (Cargo cargo : Cargo.values()) {
+                if (cargo.getNome().equals(nomeCargo)) {
+                    return cargo;
+                }
+            }
+        }
+        return null;
+    }
 	
 	private void formatarCPF() {
 	    String text = cpfText.getText().replaceAll("[^0-9]", ""); // Remove todos os caracteres que não são números
@@ -343,12 +376,6 @@ public class telaCadastroEmbaixador {
 	        celularText.setText(formattedCelular.toString());
 	        celularText.setSelection(celularText.getText().length()); // Coloca o cursor no final do campo
 	    }
-	}
-	
-	private void mostrarMensagemErro(String mensagem) {
-	    MessageBox messageBox = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
-	    messageBox.setMessage(mensagem);
-	    messageBox.open();
 	}
 
 }

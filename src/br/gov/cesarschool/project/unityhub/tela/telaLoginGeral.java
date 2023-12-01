@@ -9,7 +9,9 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import br.gov.cesarschool.project.unityhub.entidade.Cargo;
-import br.gov.cesarschool.project.unityhub.tela.geral.CentralizarTela;
+import br.gov.cesarschool.project.unityhub.entidade.Colaborador;
+import br.gov.cesarschool.project.unityhub.negocio.LoginCadastroMediator;
+import br.gov.cesarschool.project.unityhub.tela.geral.TelaUtils;
 
 import org.eclipse.wb.swt.SWTResourceManager;
 
@@ -17,6 +19,8 @@ import org.eclipse.wb.swt.SWTResourceManager;
 public class telaLoginGeral {
 
 	protected Shell shell;
+	
+	LoginCadastroMediator mediator = LoginCadastroMediator.getInstancia();
 
 	/**
 	 * Launch the application.
@@ -39,7 +43,7 @@ public class telaLoginGeral {
 		createContents();
 		shell.open();
 		shell.layout();
-		CentralizarTela.centralizarJanela(shell);
+		TelaUtils.centralizarJanela(shell);
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
@@ -65,17 +69,6 @@ public class telaLoginGeral {
 	    Button btnLogin = new Button(shell, SWT.NONE);
 	    btnLogin.setBounds(165, 209, 90, 30);
 	    btnLogin.setText("Login");
-	    
-	    // Adicionando manipulador de eventos para o botão de login
-	    btnLogin.addSelectionListener(new SelectionAdapter() {
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                shell.dispose(); // Fecha a janela atual
-
-                telaMenuEmbaixador novaJanela = new telaMenuEmbaixador();
-                novaJanela.open(); // Abre a nova janela
-            }
-        });
 	    
 	    // Campos de texto para o usuário inserir suas credenciais
 	    Label lblEmail = new Label(shell, SWT.NONE);
@@ -136,6 +129,29 @@ public class telaLoginGeral {
                 }
             }
         };
+        
+        // Adicionando manipulador de eventos para o botão de login
+	    btnLogin.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+            	Colaborador colaborador = mediator.buscarColaborador(textEmail.getText());
+            	String message = mediator.logarColaborador(colaborador, textSenha.getText());
+            	if(message != null) {
+            		TelaUtils.mostrarMensagemErro(message, shell);
+            	}else {
+            		if(colaborador.getCargo() == Cargo.GERENCIA) {
+            			TelaUtils.mostrarMensagemErro("Gerente", shell);
+            			shell.dispose();
+            		}else if(colaborador.getCargo() == Cargo.EMBAIXADOR) {
+            			shell.dispose();
+            			telaMenuEmbaixador novaJanela = new telaMenuEmbaixador();
+            			novaJanela.open();            			
+            		}else {
+            			TelaUtils.mostrarMensagemErro("Random", shell);
+            		}
+            	}
+            }
+        });
         
         radioGerencia.addSelectionListener(radioButtonSelectionAdapter);
         radioEmbaixador.addSelectionListener(radioButtonSelectionAdapter);

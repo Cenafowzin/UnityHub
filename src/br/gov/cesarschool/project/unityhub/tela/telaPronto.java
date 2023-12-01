@@ -3,9 +3,7 @@ package br.gov.cesarschool.project.unityhub.tela;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-
-import br.gov.cesarschool.project.unityhub.tela.geral.CentralizarTela;
-
+import br.gov.cesarschool.project.unityhub.tela.geral.TelaUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.jface.resource.LocalResourceManager;
 import org.eclipse.jface.resource.JFaceResources;
@@ -43,7 +41,7 @@ public class telaPronto {
 		createContents();
 		shell.open();
 		shell.layout();
-		CentralizarTela.centralizarJanela(shell);
+		TelaUtils.centralizarJanela(shell);
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();

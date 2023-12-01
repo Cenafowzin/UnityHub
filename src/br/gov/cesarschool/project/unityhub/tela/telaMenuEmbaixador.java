@@ -2,9 +2,7 @@ package br.gov.cesarschool.project.unityhub.tela;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-
-import br.gov.cesarschool.project.unityhub.tela.geral.CentralizarTela;
-
+import br.gov.cesarschool.project.unityhub.tela.geral.TelaUtils;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
@@ -36,7 +34,7 @@ public class telaMenuEmbaixador {
 		createContents();
 		shell.open();
 		shell.layout();
-		CentralizarTela.centralizarJanela(shell);
+		TelaUtils.centralizarJanela(shell);
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();

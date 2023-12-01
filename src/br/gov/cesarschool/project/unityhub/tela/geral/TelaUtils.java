@@ -1,10 +1,11 @@
 package br.gov.cesarschool.project.unityhub.tela.geral;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Monitor;
 
-public class CentralizarTela {
+public class TelaUtils {
 	
     public static void centralizarJanela(Shell shell) {
         // Obtém o monitor primário
@@ -18,4 +19,10 @@ public class CentralizarTela {
         // Define a localização central para a janela
         shell.setLocation(x, y);
     }
+    
+    public static void mostrarMensagemErro(String mensagem, Shell shell) {
+	    MessageBox messageBox = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
+	    messageBox.setMessage(mensagem);
+	    messageBox.open();
+	}
 }
