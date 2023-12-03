@@ -32,7 +32,7 @@ public class TelaPronto {
 			e.printStackTrace();
 		}
 	}
-
+ 
 	/**
 	 * Open the window.
 	 */

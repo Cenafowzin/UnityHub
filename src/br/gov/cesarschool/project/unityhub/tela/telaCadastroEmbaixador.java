@@ -53,7 +53,7 @@ public class TelaCadastroEmbaixador {
 	/**
 	 * Launch the application.
 	 * @param args
-	 */
+	 */ 
 	public static void main(String[] args) {
 		try {
 			TelaCadastroEmbaixador window = new TelaCadastroEmbaixador();

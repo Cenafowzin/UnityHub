@@ -42,7 +42,7 @@ public class TelaCadastroProjeto {
 	public TelaCadastroProjeto(Colaborador colaborador) {
 		this.colaborador = colaborador;
 	}
-	
+	 
 	LoginCadastroMediator mediator = LoginCadastroMediator.getInstancia();
 	/**
 	 * Open the window.
