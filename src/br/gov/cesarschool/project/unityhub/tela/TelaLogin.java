@@ -8,7 +8,6 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import br.gov.cesarschool.project.unityhub.entidade.Cargo;
 import br.gov.cesarschool.project.unityhub.entidade.Colaborador;
 import br.gov.cesarschool.project.unityhub.negocio.LoginCadastroMediator;
 import br.gov.cesarschool.project.unityhub.tela.geral.TelaUtils;
@@ -105,19 +104,6 @@ public class TelaLogin {
         Label lblNoPossuiLogin = new Label(shell, SWT.NONE);
         lblNoPossuiLogin.setBounds(150, 279, 133, 20);
         lblNoPossuiLogin.setText("Não possui login?");
-
-        // Manipulador de eventos para os botões de rádio
-        SelectionAdapter radioButtonSelectionAdapter = new SelectionAdapter() {
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                Button source = (Button) e.getSource();
-                if (source.getSelection()) { // Verifica se o botão de rádio está selecionado
-                    Cargo cargoSelecionado = Cargo.valueOf(source.getText().toUpperCase().replace(" ", "_"));
-                    System.out.println("Cargo selecionado: " + cargoSelecionado.getNome() +
-                                       " - Código: " + cargoSelecionado.getCodigo());
-                }
-            }
-        };
         
         // Adicionando manipulador de eventos para o botão de login
 	    btnLogin.addSelectionListener(new SelectionAdapter() {

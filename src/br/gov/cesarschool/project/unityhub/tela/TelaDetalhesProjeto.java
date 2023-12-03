@@ -85,7 +85,7 @@ public class TelaDetalhesProjeto {
 			public void widgetSelected(SelectionEvent e) {
                 shell.dispose(); // Fecha a janela atual
 
-                TelaProjetosGerencia novaJanela = new TelaProjetosGerencia(colaborador);
+                TelaProjetos novaJanela = new TelaProjetos(colaborador);
                 novaJanela.open(); // Abre a nova janela
             }
 		});

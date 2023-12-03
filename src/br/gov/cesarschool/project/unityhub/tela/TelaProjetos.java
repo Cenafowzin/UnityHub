@@ -4,6 +4,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import br.gov.cesarschool.project.unityhub.entidade.Cargo;
 import br.gov.cesarschool.project.unityhub.entidade.Colaborador;
 import br.gov.cesarschool.project.unityhub.entidade.Projeto;
 import br.gov.cesarschool.project.unityhub.negocio.ProjetoMediator;
@@ -17,7 +18,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Label;
 
-public class TelaProjetosGerencia {
+public class TelaProjetos {
 	
 	private Colaborador colaborador;
 	protected Shell shell;
@@ -27,7 +28,7 @@ public class TelaProjetosGerencia {
 	ProjetoMediator mediator = ProjetoMediator.getInstancia();
 	private Composite composite;
 	
-	public TelaProjetosGerencia(Colaborador colaborador) {
+	public TelaProjetos(Colaborador colaborador) {
 		this.colaborador = colaborador;
 	}
 
@@ -37,7 +38,7 @@ public class TelaProjetosGerencia {
 	 */
 	public static void main(String[] args) {
 		try {
-			TelaProjetosGerencia window = new TelaProjetosGerencia(null);
+			TelaProjetos window = new TelaProjetos(null);
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,8 +72,15 @@ public class TelaProjetosGerencia {
 	    composite = new Composite(shell, SWT.NONE);
 	    composite.setLayout(new GridLayout(1, false));
 	    composite.setBounds(37, 100, 430, 418); // Definindo bounds para o composite
-
-	    Projeto[] projetos = mediator.listarProjetos();
+	    
+	    Projeto[] projetos = null;
+	    
+	    if(colaborador.getCargo() == Cargo.GERENCIA) {
+	    	projetos = mediator.listarProjetos();	    	
+	    }else if(colaborador.getCargo() == Cargo.EMBAIXADOR) {
+	    	projetos = mediator.listarProjetosPorEstado(colaborador.getEstado());
+	    }
+	    
 	    if (projetos != null) {
 	        for (Projeto projeto : projetos) {
 	            Button btnProjeto = new Button(composite, SWT.NONE);
@@ -108,9 +116,14 @@ public class TelaProjetosGerencia {
 		        // Cria um novo Composite após descartar o antigo
 		        composite = new Composite(shell, SWT.NONE);
 		        composite.setLayout(new GridLayout(1, false));
-		        composite.setBounds(10, 100, 430, 418);
+		        composite.setBounds(37, 100, 430, 418);
 
-		        Projeto[] projetos = mediator.listarProjetos();
+		        Projeto[] projetos = null;
+		        if(colaborador.getCargo() == Cargo.GERENCIA) {
+			    	projetos = mediator.listarProjetos();	    	
+			    }else if(colaborador.getCargo() == Cargo.EMBAIXADOR) {
+			    	projetos = mediator.listarProjetosPorEstado(colaborador.getEstado());
+			    }
 		        if (projetos != null) {
 		            for (Projeto projeto : projetos) {
 		                if (projeto.getNome().toLowerCase().contains(searchText)) {
