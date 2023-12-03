@@ -16,7 +16,7 @@ Trata-se de um software desenvolido em JAVA focado em facilitar a comunicação 
 1. Para o programa funcionar de maneira adequada, é necessário fazer o download de todos os arquivos que se encontram neste github, sem esquecer das pastas: **lib, Estado e Colaborador.**
 2. Para executar o programa, acessar a pasta **src** e abrir o package **br.gov.cesarschool.project.unityhub.tela**, dentro dele localizar a tela **telaLoginGeral** clickar com o botão direito,em seguida **Run As** e selecionar opção **Java Aplication**.
 3. 
-![image](https://github.com/Cenafowzin/UnityHub/assets/101901740/a43021f0-e797-4dc3-a461-a27075cbcafe)  ![image](https://github.com/Cenafowzin/UnityHub/assets/101901740/5788b8e5-ea55-4fff-bb87-41b8dbd4dcdd)
+![image](https://github.com/Cenafowzin/UnityHub/assets/101901740/a43021f0-e797-4dc3-a461-a27075cbcafe) 
 
 
 ![image](https://github.com/Cenafowzin/UnityHub/assets/101901740/1d05941a-53df-4bcf-afba-dc0315c29713)
