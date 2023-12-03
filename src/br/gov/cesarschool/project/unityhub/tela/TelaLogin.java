@@ -128,16 +128,9 @@ public class TelaLogin {
             	if(message != null) {
             		TelaUtils.mostrarMensagemErro(message, shell);
             	}else {
-            		if(colaborador.getCargo() == Cargo.GERENCIA) {
-            			TelaUtils.mostrarMensagemErro("Gerente", shell);
-            			shell.dispose();
-            		}else if(colaborador.getCargo() == Cargo.EMBAIXADOR) {
-            			shell.dispose();
-            			TelaMenu novaJanela = new TelaMenu(colaborador);
-            			novaJanela.open();            			
-            		}else {
-            			TelaUtils.mostrarMensagemErro("Random", shell);
-            		}
+            		shell.dispose();
+            		TelaMenu novaJanela = new TelaMenu(colaborador);
+            		novaJanela.open();            			
             	}
             }
         });
