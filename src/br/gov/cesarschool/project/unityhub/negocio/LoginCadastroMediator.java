@@ -4,8 +4,10 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import br.gov.cesarschool.project.unityhub.dao.ColaboradorDAO;
 import br.gov.cesarschool.project.unityhub.dao.EstadoDAO;
+import br.gov.cesarschool.project.unityhub.dao.ProjetoDAO;
 import br.gov.cesarschool.project.unityhub.entidade.Colaborador;
 import br.gov.cesarschool.project.unityhub.entidade.Estado;
+import br.gov.cesarschool.project.unityhub.entidade.Projeto;
 import br.gov.cesarschool.project.unityhub.negocio.geral.StringUtil;
 import br.gov.cesarschool.project.unityhub.negocio.geral.ValidadorCPF;
 
@@ -19,10 +21,12 @@ public class LoginCadastroMediator {
 	}
 	private ColaboradorDAO repositorioColaborador;
 	private EstadoDAO repositorioEstado;
+	private ProjetoDAO repositorioProjeto;
 	
 	private LoginCadastroMediator() {
 		this.repositorioColaborador = new ColaboradorDAO();
 		this.repositorioEstado = new EstadoDAO();
+		this.repositorioProjeto = new ProjetoDAO();
 	}
 	
 	public Colaborador buscarColaborador(String email) {
@@ -87,6 +91,19 @@ public class LoginCadastroMediator {
 	    return null;
 	}
 	
+	public String cadastroProjeto(Projeto projeto) {
+		String message = validarProjeto(projeto);
+		if(message != null) {
+			return message;
+		}
+		
+		boolean incluir = repositorioProjeto.incluir(projeto);
+		if(incluir == false) {
+			return "Projeto já existe";
+		}
+		return null;
+	}
+	
 	public String[] listarEstados() {
 		Estado[] estados = repositorioEstado.buscarTodos();
 		String[] nomesEstados = new String[estados.length];
@@ -104,6 +121,25 @@ public class LoginCadastroMediator {
 		}
 		
 		return "Login ou senha incorretos";
+	}
+	
+	private String validarProjeto(Projeto projeto) {
+		if (StringUtil.ehNuloOuBranco(projeto.getNome())) {
+			return "Nome do projeto não informado";
+		}
+		if (StringUtil.ehNuloOuBranco(projeto.getCelular())) {
+			return "Celular não informado";
+		}
+		if (StringUtil.ehNuloOuBranco(projeto.getCidade())) {
+			return "Cidade não informada";
+		}
+		if(StringUtil.ehNuloOuBranco(projeto.getDescricao())) {
+			return "Descrição não informada";
+		}
+		if(projeto.getPrioridade() == null) {
+			return "Prioridade não selecionada";
+		}
+		return null;
 	}
 	
 	private String validarColaborador(Colaborador colaborador) {

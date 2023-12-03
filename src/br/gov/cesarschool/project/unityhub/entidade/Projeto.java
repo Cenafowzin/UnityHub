@@ -8,17 +8,23 @@ public class Projeto extends Registro{
 	private String celular;
 	private String email;
 	private String descricao;
-	private String cep;
+	private String cidade;
+	private Estado estado;
 	private Prioridade prioridade;
 
-	public Projeto(String nome, String celular, String email, String descricao, String cep, Prioridade prioridade) {
+	public Projeto(String nome, String celular, String email, String descricao, String cidade, Estado estado, Prioridade prioridade) {
 		super();
 		this.nome = nome;
 		this.celular = celular;
 		this.email = email;
 		this.descricao = descricao;
-		this.cep = cep;
+		this.cidade = cidade;
+		this.estado = estado;
 		this.prioridade = prioridade;
+	}
+
+	public Estado getEstado() {
+		return estado;
 	}
 
 	public Prioridade getPrioridade() {
@@ -40,14 +46,14 @@ public class Projeto extends Registro{
 	public String getDescricao() {
 		return descricao;
 	}
-
-	public String getCep() {
-		return cep;
+	
+	public String getCidade() {
+		return cidade;
 	}
 	
 	@Override
 	public String getIdUnico() {
-		return nome;
+		return email;
 	}
 	
 }
