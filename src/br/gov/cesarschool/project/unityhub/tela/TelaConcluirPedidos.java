@@ -65,16 +65,21 @@ public class TelaConcluirPedidos {
 		lblProjeto.setText("Projeto:");
 		
 		textProjeto = new Text(shell, SWT.BORDER);
+		textProjeto.setEnabled(false);
+		textProjeto.setEditable(false);
 		textProjeto.setBounds(10, 82, 392, 26);
 		
 		Label lblDescrio = new Label(shell, SWT.NONE);
 		lblDescrio.setBounds(10, 141, 70, 20);
 		lblDescrio.setText("Descrição:");
 		
-		textDescricao = new Text(shell, SWT.BORDER);
+		textDescricao = new Text(shell, SWT.BORDER | SWT.V_SCROLL);
+		textDescricao.setEnabled(false);
+		textDescricao.setEditable(false);
 		textDescricao.setBounds(10, 174, 392, 181);
 		
 		Combo comboPrioridade = new Combo(shell, SWT.NONE);
+		comboPrioridade.setEnabled(false);
 		comboPrioridade.setBounds(10, 412, 137, 28);
 		
 		Label lblPrioridade = new Label(shell, SWT.NONE);
@@ -87,7 +92,7 @@ public class TelaConcluirPedidos {
 			public void widgetSelected(SelectionEvent e) {
 			}
 		});
-		btnConcluido.setBounds(168, 510, 90, 30);
+		btnConcluido.setBounds(128, 505, 179, 30);
 		btnConcluido.setText("Marcar como concluído");
 		
 		Button btnVoltar = new Button(shell, SWT.NONE);

@@ -65,13 +65,15 @@ public class TelaCadastrarPedidos {
 		lblProjeto.setText("Projeto:");
 		
 		textProjeto = new Text(shell, SWT.BORDER);
+		textProjeto.setEnabled(false);
+		textProjeto.setEditable(false);
 		textProjeto.setBounds(10, 82, 392, 26);
 		
 		Label lblDescrio = new Label(shell, SWT.NONE);
 		lblDescrio.setBounds(10, 141, 70, 20);
 		lblDescrio.setText("Descrição:");
 		
-		textDescricao = new Text(shell, SWT.BORDER);
+		textDescricao = new Text(shell, SWT.BORDER | SWT.V_SCROLL);
 		textDescricao.setBounds(10, 174, 392, 181);
 		
 		Combo comboPrioridade = new Combo(shell, SWT.NONE);
