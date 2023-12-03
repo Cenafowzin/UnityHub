@@ -15,13 +15,15 @@ Trata-se de um software desenvolido em JAVA focado em facilitar a comunicação 
 ## Instruções
 1. É necessário baixar e instalar o Eclipse. Você pode encontrar em: https://www.eclipse.org/downloads/
 2. Após instalar o eclipse, para o programa funcionar de maneira adequada, é necessário fazer o download de todos os arquivos que se encontram neste github, sem esquecer das pastas: **lib, Estado e Colaborador.**
-3. Para executar o programa,por meio do eclipse, acessar a pasta **src** e abrir o package **br.gov.cesarschool.project.unityhub.tela**, dentro dele localizar a tela **telaLoginGeral** clicar com o botão direito,em seguida **Run As** e selecionar opção **Java Aplication**.
+3. Para executar o programa,por meio do eclipse, acessar a pasta **src** e abrir o package **br.gov.cesarschool.project.unityhub.tela**, dentro dele localizar a tela **TelaLogin** clicar com o botão direito,em seguida **Run As** e selecionar opção **Java Aplication**.
 
- 
-![image](https://github.com/Cenafowzin/UnityHub/assets/101901740/a43021f0-e797-4dc3-a461-a27075cbcafe) 
+ ![image](https://github.com/Cenafowzin/UnityHub/assets/101901740/71adf941-fecf-47af-bf2f-da3a0e6ba2cd)
 
+![image](https://github.com/Cenafowzin/UnityHub/assets/101901740/7f895dec-683b-40ee-905f-aabc1fa7a8d3)
 
-![image](https://github.com/Cenafowzin/UnityHub/assets/101901740/1d05941a-53df-4bcf-afba-dc0315c29713)
+4. Essa aqui é a nossa tela inicial:
+
+![image](https://github.com/Cenafowzin/UnityHub/assets/101901740/cf06765f-62db-43f5-b825-0286f8ff2053)
 
 
 ## Equipe
