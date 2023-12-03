@@ -54,11 +54,11 @@ public class TelaMenu {
 	 */
 	protected void createContents() {
 		shell = new Shell();
-		shell.setSize(450, 300);
+		shell.setSize(450, 398);
 		shell.setText("SWT Application");
 		
 		Label lblBemVindoEmabaixador = new Label(shell, SWT.CENTER);
-		lblBemVindoEmabaixador.setBounds(140, 45, 168, 27);
+		lblBemVindoEmabaixador.setBounds(61, 45, 304, 135);
 		if(colaborador != null) {
 			String[] partesNome = colaborador.getNomeCompleto().split(" ");
 			String primeiroNome = partesNome[0];
@@ -75,7 +75,7 @@ public class TelaMenu {
                 novaJanela4.open(); // Abre a nova janela
 			}
 		});
-		btnGestaoDemanda.setBounds(131, 104, 177, 30);
+		btnGestaoDemanda.setBounds(136, 223, 177, 30);
 		btnGestaoDemanda.setText("Gestão de demanda");
 		
 		Button btnGestaoProjetos = new Button(shell, SWT.NONE);
@@ -88,7 +88,7 @@ public class TelaMenu {
                 novaJanela2.open(); // Abre a nova janela
 			}
 		});
-		btnGestaoProjetos.setBounds(126, 175, 182, 30);
+		btnGestaoProjetos.setBounds(136, 275, 182, 30);
 		btnGestaoProjetos.setText("Gestão de projetos");
 		
 		Button btnVoltar = new Button(shell, SWT.NONE);

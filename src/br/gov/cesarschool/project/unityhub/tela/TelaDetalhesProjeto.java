@@ -54,30 +54,30 @@ public class TelaDetalhesProjeto {
 		
 		textoProjeto = new Text(shell, SWT.BORDER);
 		textoProjeto.setEnabled(false);
-		textoProjeto.setBounds(65, 80, 255, 29);
+		textoProjeto.setBounds(55, 101, 327, 29);
 		textoProjeto.setText(projeto.getNome());;
 		
 		Label lblNomeDoPrjeto = new Label(shell, SWT.NONE);
-		lblNomeDoPrjeto.setBounds(65, 59, 96, 15);
+		lblNomeDoPrjeto.setBounds(55, 66, 96, 29);
 		lblNomeDoPrjeto.setText("Projeto");
 		
 		Label lblEstado = new Label(shell, SWT.NONE);
 		lblEstado.setText("Estado");
-		lblEstado.setBounds(65, 115, 96, 15);
+		lblEstado.setBounds(55, 136, 96, 33);
 		
 		textoEstado = new Text(shell, SWT.BORDER);
 		textoEstado.setEnabled(false);
-		textoEstado.setBounds(65, 136, 255, 29);
+		textoEstado.setBounds(55, 175, 327, 29);
 		textoEstado.setText(projeto.getEstado().getNome());
 		
 		textoDescricao = new Text(shell, SWT.BORDER | SWT.V_SCROLL);
 		textoDescricao.setEnabled(false);
-		textoDescricao.setBounds(65, 192, 255, 121);
+		textoDescricao.setBounds(55, 245, 327, 179);
 		textoDescricao.setText(projeto.getDescricao());
 		
 		lblDescricao = new Label(shell, SWT.NONE);
 		lblDescricao.setText("Descrição");
-		lblDescricao.setBounds(65, 171, 96, 15);
+		lblDescricao.setBounds(55, 210, 111, 29);
 		
 		btnVoltar = new Button(shell, SWT.NONE);
 		btnVoltar.addSelectionListener(new SelectionAdapter() {
@@ -105,7 +105,7 @@ public class TelaDetalhesProjeto {
 	 */
 	protected void createContents() {
 		shell = new Shell();
-		shell.setSize(406, 385);
+		shell.setSize(454, 503);
 		shell.setText("SWT Application");
 
 	}

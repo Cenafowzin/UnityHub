@@ -65,12 +65,12 @@ public class TelaProjetosGerencia {
 	 */
 	protected void createContents() {
 		shell = new Shell();
-	    shell.setSize(450, 528);
+	    shell.setSize(527, 618);
 	    shell.setText("SWT Application");
 
 	    composite = new Composite(shell, SWT.NONE);
 	    composite.setLayout(new GridLayout(1, false));
-	    composite.setBounds(10, 100, 430, 418); // Definindo bounds para o composite
+	    composite.setBounds(37, 100, 430, 418); // Definindo bounds para o composite
 
 	    Projeto[] projetos = mediator.listarProjetos();
 	    if (projetos != null) {
@@ -93,10 +93,10 @@ public class TelaProjetosGerencia {
 	    composite.layout();
 		
 		buscar = new Text(shell, SWT.BORDER);
-		buscar.setBounds(99, 21, 212, 26);
+		buscar.setBounds(109, 21, 271, 26);
 		
 		Button btnBuscar = new Button(shell, SWT.NONE);
-		btnBuscar.setBounds(317, 19, 46, 30);
+		btnBuscar.setBounds(386, 19, 46, 30);
 		btnBuscar.setText("🔍︎");
 		
 		btnBuscar.addSelectionListener(new SelectionAdapter() {
@@ -135,7 +135,7 @@ public class TelaProjetosGerencia {
 		});
 		
 		lblProjetos = new Label(shell, SWT.NONE);
-		lblProjetos.setBounds(173, 74, 70, 20);
+		lblProjetos.setBounds(218, 65, 70, 20);
 		lblProjetos.setText("Projetos");
 		
 		btnVoltar = new Button(shell, SWT.NONE);
@@ -148,7 +148,7 @@ public class TelaProjetosGerencia {
                 novaJanela.open(); // Abre a nova janela
             }
 		});
-		btnVoltar.setBounds(10, 19, 46, 30);
+		btnVoltar.setBounds(31, 19, 46, 30);
 		btnVoltar.setText(" ←");
 
 	}
