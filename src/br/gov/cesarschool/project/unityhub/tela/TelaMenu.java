@@ -71,7 +71,7 @@ public class TelaMenu {
 			public void widgetSelected(SelectionEvent e) {
 				shell.dispose(); // Fecha a janela atual
 
-                TelaDemanda novaJanela4 = new TelaDemanda();
+				TelaDemandaGerencia novaJanela4 = new TelaDemandaGerencia(colaborador);
                 novaJanela4.open(); // Abre a nova janela
 			}
 		});

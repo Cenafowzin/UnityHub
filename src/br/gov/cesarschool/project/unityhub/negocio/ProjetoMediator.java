@@ -2,6 +2,7 @@ package br.gov.cesarschool.project.unityhub.negocio;
 
 import br.gov.cesarschool.project.unityhub.dao.PedidoDAO;
 import br.gov.cesarschool.project.unityhub.dao.ProjetoDAO;
+import br.gov.cesarschool.project.unityhub.entidade.Pedido;
 import br.gov.cesarschool.project.unityhub.entidade.Projeto;
 
 public class ProjetoMediator {
@@ -23,5 +24,9 @@ public class ProjetoMediator {
 	
 	public Projeto[] listarProjetos() {
 		return repositorioProjeto.buscarTodos();
+	}
+	
+	public Pedido[] listarPedidos() {
+		return repositorioPedido.buscarTodos();
 	}
 }
