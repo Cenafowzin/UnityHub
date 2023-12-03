@@ -132,7 +132,7 @@ public class TelaCadastroProjeto {
 			public void widgetSelected(SelectionEvent e) {
 				mediator.excluirColaborador(colaborador);
 				shell.dispose();
-                telaCadastroEmbaixador novaJanela = new telaCadastroEmbaixador();
+				TelaCadastroEmbaixador novaJanela = new TelaCadastroEmbaixador();
                 novaJanela.open();
 			}
 		});

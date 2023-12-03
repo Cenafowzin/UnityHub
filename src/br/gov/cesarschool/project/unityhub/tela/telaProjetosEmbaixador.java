@@ -13,7 +13,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 
-public class telaProjetosEmbaixador {
+public class TelaProjetosEmbaixador {
 	
 	private Colaborador logado;
 	protected Shell shell;
@@ -27,7 +27,7 @@ public class telaProjetosEmbaixador {
 	 */
 	public static void main(String[] args) {
 		try {
-			telaProjetosEmbaixador window = new telaProjetosEmbaixador();
+			TelaProjetosEmbaixador window = new TelaProjetosEmbaixador();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();

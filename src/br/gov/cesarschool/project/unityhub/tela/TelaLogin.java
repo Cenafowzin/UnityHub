@@ -108,7 +108,7 @@ public class TelaLogin {
             public void widgetSelected(SelectionEvent e) {
                 shell.dispose(); // Fecha a janela atual
 
-                telaCadastroEmbaixador novaJanela = new telaCadastroEmbaixador();
+                TelaCadastroEmbaixador novaJanela = new TelaCadastroEmbaixador();
                 novaJanela.open(); // Abre a nova janela
             }
         });

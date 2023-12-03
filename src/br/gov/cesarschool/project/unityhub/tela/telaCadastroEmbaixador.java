@@ -19,7 +19,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
 
-public class telaCadastroEmbaixador {
+public class TelaCadastroEmbaixador {
 
 	protected Shell shell;
 	private Text nomeText;
@@ -56,7 +56,7 @@ public class telaCadastroEmbaixador {
 	 */
 	public static void main(String[] args) {
 		try {
-			telaCadastroEmbaixador window = new telaCadastroEmbaixador();
+			TelaCadastroEmbaixador window = new TelaCadastroEmbaixador();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
