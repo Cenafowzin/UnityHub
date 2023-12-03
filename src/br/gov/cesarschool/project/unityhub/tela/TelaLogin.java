@@ -61,42 +61,31 @@ public class TelaLogin {
 	    
 	    // Rótulo para o título da aplicação
 	    Label lblUnityhub = new Label(shell, SWT.NONE);
-	    lblUnityhub.setFont(SWTResourceManager.getFont("Segoe UI", 16, SWT.NORMAL));
-	    lblUnityhub.setBounds(159, 23, 121, 42);
+	    lblUnityhub.setImage(null);
+	    lblUnityhub.setForeground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_FOREGROUND));
+	    lblUnityhub.setFont(SWTResourceManager.getFont("Segoe UI Black", 30, SWT.BOLD));
+	    lblUnityhub.setBounds(91, 56, 245, 78);
 	    lblUnityhub.setText("UnityHub");
 	    
 	    // Botão de login
 	    Button btnLogin = new Button(shell, SWT.NONE);
-	    btnLogin.setBounds(165, 209, 90, 30);
+	    btnLogin.setBounds(165, 228, 90, 30);
 	    btnLogin.setText("Login");
 	    
 	    // Campos de texto para o usuário inserir suas credenciais
 	    Label lblEmail = new Label(shell, SWT.NONE);
-	    lblEmail.setBounds(10, 100, 55, 18);
+	    lblEmail.setBounds(10, 168, 55, 18);
 	    lblEmail.setText("E-mail:");
 	    
 	    Text textEmail = new Text(shell, SWT.BORDER);
-	    textEmail.setBounds(71, 97, 294, 21);
+	    textEmail.setBounds(71, 165, 294, 21);
 	    
 	    Label lblSenha = new Label(shell, SWT.NONE);
-	    lblSenha.setBounds(10, 130, 55, 24);
+	    lblSenha.setBounds(10, 198, 55, 24);
 	    lblSenha.setText("Senha:");
 	    
 	    Text textSenha = new Text(shell, SWT.BORDER | SWT.PASSWORD);
-	    textSenha.setBounds(71, 127, 294, 21);
-	    
-	 // Botões de rádio para seleção do tipo de usuário
-        Button radioGerencia = new Button(shell, SWT.RADIO);
-        radioGerencia.setBounds(10, 160, 130, 25);
-        radioGerencia.setText(Cargo.GERENCIA.getNome());
-        
-        Button radioEmbaixador = new Button(shell, SWT.RADIO);
-        radioEmbaixador.setBounds(150, 160, 130, 25);
-        radioEmbaixador.setText(Cargo.EMBAIXADOR.getNome());
-        
-        Button radioUsuario = new Button(shell, SWT.RADIO);
-        radioUsuario.setBounds(290, 160, 130, 25);
-        radioUsuario.setText(Cargo.USUARIO.getNome());
+	    textSenha.setBounds(71, 195, 294, 21);
         
         Button btnCadastrar = new Button(shell, SWT.NONE);
         btnCadastrar.setBounds(165, 305, 90, 30);
@@ -153,8 +142,5 @@ public class TelaLogin {
             }
         });
         
-        radioGerencia.addSelectionListener(radioButtonSelectionAdapter);
-        radioEmbaixador.addSelectionListener(radioButtonSelectionAdapter);
-        radioUsuario.addSelectionListener(radioButtonSelectionAdapter);
     }
 }

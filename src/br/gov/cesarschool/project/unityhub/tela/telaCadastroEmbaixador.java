@@ -84,42 +84,42 @@ public class TelaCadastroEmbaixador {
 	 */
 	protected void createContents() {
 		shell = new Shell();
-		shell.setSize(450, 759);
+		shell.setSize(826, 745);
 		shell.setText("SWT Application");
 		
 		nomeText = new Text(shell, SWT.BORDER);
-		nomeText.setBounds(17, 38, 324, 26);
+		nomeText.setBounds(20, 97, 324, 26);
 		
 		Button btnConcluir = new Button(shell, SWT.NONE);
-		btnConcluir.setBounds(164, 651, 90, 30);
+		btnConcluir.setBounds(355, 645, 90, 30);
 		btnConcluir.setText("Concluir");
 		
 		lblCidade = new Label(shell, SWT.NONE);
-		lblCidade.setBounds(20, 361, 70, 20);
+		lblCidade.setBounds(20, 313, 70, 20);
 		lblCidade.setText("Cidade");
 		
 		lblEstado = new Label(shell, SWT.NONE);
-		lblEstado.setBounds(20, 295, 70, 20);
+		lblEstado.setBounds(463, 253, 70, 20);
 		lblEstado.setText("Estado");
 		
 		lblCep = new Label(shell, SWT.NONE);
-		lblCep.setBounds(216, 358, 70, 20);
-		lblCep.setText("Cep");
+		lblCep.setBounds(20, 253, 70, 20);
+		lblCep.setText("CEP");
 		
 		lblNomeCompleto = new Label(shell, SWT.NONE);
-		lblNomeCompleto.setBounds(20, 10, 138, 20);
+		lblNomeCompleto.setBounds(19, 71, 138, 20);
 		lblNomeCompleto.setText("Nome completo");
 		
 		lblCpf = new Label(shell, SWT.NONE);
-		lblCpf.setBounds(18, 74, 70, 20);
+		lblCpf.setBounds(463, 74, 70, 20);
 		lblCpf.setText("CPF:");
 		
 		lblGnero = new Label(shell, SWT.NONE);
-		lblGnero.setBounds(18, 129, 70, 20);
+		lblGnero.setBounds(20, 130, 70, 20);
 		lblGnero.setText("Gênero");
 		
 		lblDataDeNascimento = new Label(shell, SWT.NONE);
-		lblDataDeNascimento.setBounds(20, 235, 186, 20);
+		lblDataDeNascimento.setBounds(463, 143, 186, 20);
 		lblDataDeNascimento.setText("Data de Nascimento");
 		
 		lblCelular = new Label(shell, SWT.NONE);
@@ -127,7 +127,7 @@ public class TelaCadastroEmbaixador {
 		lblCelular.setText("Celular");
 		
 		cpfText = new Text(shell, SWT.BORDER);
-		cpfText.setBounds(16, 94, 324, 26);
+		cpfText.setBounds(463, 100, 324, 26);
 		cpfText.addModifyListener(new ModifyListener() {
             @Override
             public void modifyText(ModifyEvent e) {
@@ -136,7 +136,7 @@ public class TelaCadastroEmbaixador {
         });
 		
 		generoText = new Text(shell, SWT.BORDER);
-		generoText.setBounds(19, 153, 324, 26);
+		generoText.setBounds(20, 156, 324, 26);
 		
 		celularText = new Text(shell, SWT.BORDER);
 		celularText.setBounds(20, 211, 324, 26);
@@ -148,7 +148,7 @@ public class TelaCadastroEmbaixador {
 		});
 		
 		dataNascText = new Text(shell, SWT.BORDER);
-		dataNascText.setBounds(18, 260, 324, 26);
+		dataNascText.setBounds(463, 163, 324, 26);
 		dataNascText.addModifyListener(new ModifyListener() {
 		    @Override
 		    public void modifyText(ModifyEvent e) {
@@ -158,14 +158,14 @@ public class TelaCadastroEmbaixador {
 		
 		String[] estados = mediator.listarEstados();
 		cmbEstado = new Combo(shell, SWT.READ_ONLY);
-	    cmbEstado.setBounds(14, 320, 324, 26);
+	    cmbEstado.setBounds(463, 279, 324, 28);
 	    cmbEstado.setItems(estados);
 		
 		cidadeText= new Text(shell, SWT.BORDER);
-		cidadeText.setBounds(20, 382, 128, 26);
+		cidadeText.setBounds(20, 339, 324, 26);
 		
 		cepText = new Text(shell, SWT.BORDER);
-		cepText.setBounds(229, 386, 189, 26);
+		cepText.setBounds(20, 279, 324, 26);
 		cepText.addModifyListener(new ModifyListener() {
 		    @Override
 		    public void modifyText(ModifyEvent e) {
@@ -174,32 +174,32 @@ public class TelaCadastroEmbaixador {
 		});
 		
 		cmbCargo = new Combo(shell, SWT.READ_ONLY);
-        cmbCargo.setBounds(245, 517, 128, 26);
+        cmbCargo.setBounds(463, 418, 324, 28);
         cmbCargo.setItems(getNomesCargos());
 		
-		criarSenhaText = new Text(shell, SWT.BORDER);
-		criarSenhaText.setBounds(20, 517, 128, 26);
+		criarSenhaText = new Text(shell, SWT.BORDER | SWT.PASSWORD);
+		criarSenhaText.setBounds(20, 523, 324, 26);
 		
 		emailText = new Text(shell, SWT.BORDER);
-		emailText.setBounds(17, 459, 350, 26);
+		emailText.setBounds(20, 418, 324, 26);
 		
-		confirmSenhaText = new Text(shell, SWT.BORDER);
-		confirmSenhaText.setBounds(17, 603, 78, 26);
+		confirmSenhaText = new Text(shell, SWT.BORDER | SWT.PASSWORD);
+		confirmSenhaText.setBounds(20, 591, 324, 26);
 		
 		lblEmail = new Label(shell, SWT.NONE);
-		lblEmail.setBounds(17, 423, 70, 20);
-		lblEmail.setText("e-mail");
+		lblEmail.setBounds(20, 392, 70, 20);
+		lblEmail.setText("E-mail");
 		
 		lblConfirmeSuaSenha = new Label(shell, SWT.NONE);
-		lblConfirmeSuaSenha.setBounds(17, 577, 156, 20);
-		lblConfirmeSuaSenha.setText("confirme sua senha");
+		lblConfirmeSuaSenha.setBounds(20, 565, 156, 20);
+		lblConfirmeSuaSenha.setText("Confirmar senha");
 		
 		lblCrieUmaSenha = new Label(shell, SWT.NONE);
-		lblCrieUmaSenha.setBounds(17, 491, 138, 20);
-		lblCrieUmaSenha.setText("crie uma senha");
+		lblCrieUmaSenha.setBounds(19, 497, 138, 20);
+		lblCrieUmaSenha.setText("Senha");
 		
 		lblCargo = new Label(shell, SWT.NONE);
-		lblCargo.setBounds(245, 491, 138, 20);
+		lblCargo.setBounds(463, 392, 113, 20);
 		lblCargo.setText("Cargo");
 		
 		btnVoltar = new Button(shell, SWT.NONE);
@@ -212,7 +212,7 @@ public class TelaCadastroEmbaixador {
                 loginWindow.open();
 			}
 		});
-		btnVoltar.setBounds(377, 10, 45, 30);
+		btnVoltar.setBounds(10, 5, 45, 30);
 		btnVoltar.setText(" ←");
 		
 		btnConcluir.addSelectionListener(new SelectionAdapter() {

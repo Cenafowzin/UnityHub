@@ -21,7 +21,7 @@ public class ProjetoMediator {
 		this.repositorioPedido = new PedidoDAO();
 	}
 	
-	public Projeto[] listarProjetosPorEstado() {
-		return null;
+	public Projeto[] listarProjetos() {
+		return repositorioProjeto.buscarTodos();
 	}
 }

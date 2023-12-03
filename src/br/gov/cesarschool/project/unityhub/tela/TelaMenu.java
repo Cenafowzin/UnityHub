@@ -84,7 +84,7 @@ public class TelaMenu {
 			public void widgetSelected(SelectionEvent e) {
 				shell.dispose(); // Fecha a janela atual
 
-				TelaProjetosEmbaixador novaJanela2 = new TelaProjetosEmbaixador();
+				TelaProjetosGerencia novaJanela2 = new TelaProjetosGerencia(colaborador);
                 novaJanela2.open(); // Abre a nova janela
 			}
 		});
