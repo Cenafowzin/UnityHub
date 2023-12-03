@@ -25,7 +25,6 @@ public class TelaCadastroProjeto {
 	private Text nomeText;
 	private Label lblCidade;
 	private Label lblEstado;
-	private Label lblCep;
 	private Label lblProjetoSocial;
 	private Label lblRepresentanteProjeto;
 	private Label lblEmail;
@@ -46,8 +45,10 @@ public class TelaCadastroProjeto {
 	LoginCadastroMediator mediator = LoginCadastroMediator.getInstancia();
 	/**
 	 * Open the window.
+	 * @wbp.parser.entryPoint
 	 */
 	public void open() {
+		
 		Display display = Display.getDefault();
 		createContents();
 		shell.open();
@@ -69,43 +70,39 @@ public class TelaCadastroProjeto {
 		shell.setText("SWT Application");
 		
 		nomeText = new Text(shell, SWT.BORDER);
-		nomeText.setBounds(9, 21, 324, 26);
+		nomeText.setBounds(9, 33, 324, 26);
 		
 		lblCidade = new Label(shell, SWT.NONE);
-		lblCidade.setBounds(9, 222, 70, 15);
+		lblCidade.setBounds(9, 321, 128, 26);
 		lblCidade.setText("Cidade do projeto");
 		
 		lblEstado = new Label(shell, SWT.NONE);
-		lblEstado.setBounds(9, 179, 70, 15);
+		lblEstado.setBounds(9, 257, 174, 26);
 		lblEstado.setText("Estado do projeto");
 		
-		lblCep = new Label(shell, SWT.NONE);
-		lblCep.setBounds(140, 222, 70, 15);
-		lblCep.setText("Cep do projeto");
-		
 		lblProjetoSocial = new Label(shell, SWT.NONE);
-		lblProjetoSocial.setBounds(9, 3, 138, 15);
+		lblProjetoSocial.setBounds(9, 3, 254, 26);
 		lblProjetoSocial.setText("Nome do projeto social");
 		
 		lblRepresentanteProjeto = new Label(shell, SWT.NONE);
-		lblRepresentanteProjeto.setBounds(9, 49, 201, 15);
+		lblRepresentanteProjeto.setBounds(9, 65, 324, 26);
 		lblRepresentanteProjeto.setText("Nome do representante do projeto");
 		
 		lblEmail = new Label(shell, SWT.NONE);
-		lblEmail.setBounds(9, 134, 70, 15);
+		lblEmail.setBounds(9, 193, 70, 26);
 		lblEmail.setText("E-mail");
 		
 		lblCelular = new Label(shell, SWT.NONE);
-		lblCelular.setBounds(9, 90, 70, 15);
+		lblCelular.setBounds(9, 129, 70, 26);
 		lblCelular.setText("Celular");
 		
 		representanteProjetoText = new Text(shell, SWT.BORDER);
-		representanteProjetoText.setBounds(9, 64, 324, 26);
+		representanteProjetoText.setBounds(9, 97, 324, 26);
 		representanteProjetoText.setText(colaborador.getNomeCompleto());
 		representanteProjetoText.setEnabled(false);
 		
 		celularText = new Text(shell, SWT.BORDER);
-		celularText.setBounds(9, 106, 324, 26);
+		celularText.setBounds(9, 161, 324, 26);
 		celularText.addModifyListener(new ModifyListener() {
 		    @Override
 		    public void modifyText(ModifyEvent e) {
@@ -114,17 +111,17 @@ public class TelaCadastroProjeto {
 		});
 		
 		emailText = new Text(shell, SWT.BORDER);
-		emailText.setBounds(9, 151, 324, 26);
+		emailText.setBounds(9, 225, 324, 26);
 		emailText.setText(colaborador.getEmail());
 		emailText.setEnabled(false);
 		
 		textEstado = new Text(shell, SWT.BORDER);
-		textEstado.setBounds(9, 195, 324, 26);
+		textEstado.setBounds(9, 289, 324, 26);
 		textEstado.setEnabled(false);
 		textEstado.setText(colaborador.getEstado().getNome());
 		
 		cidadeText= new Text(shell, SWT.BORDER);
-		cidadeText.setBounds(9, 239, 128, 26);
+		cidadeText.setBounds(9, 353, 324, 26);
 		
 		btnVoltar = new Button(shell, SWT.NONE);
 		btnVoltar.addSelectionListener(new SelectionAdapter() {
@@ -140,34 +137,30 @@ public class TelaCadastroProjeto {
 		btnVoltar.setText(" ←");
 		
 		Label lblDescricaoProjeto = new Label(shell, SWT.NONE);
-		lblDescricaoProjeto.setBounds(9, 268, 146, 15);
+		lblDescricaoProjeto.setBounds(9, 380, 324, 30);
 		lblDescricaoProjeto.setText("Descrição do projeto social");
 		
 		descricaoTexto = new Text(shell, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL);
-		descricaoTexto.setBounds(9, 284, 324, 118);
+		descricaoTexto.setBounds(9, 411, 396, 162);
 		
 		Menu menu = new Menu(shell, SWT.BAR);
 		shell.setMenuBar(menu);
 		
-		Label lblNecessidades = new Label(shell, SWT.NONE);
-		lblNecessidades.setText("Necessidades atuais");
-		lblNecessidades.setBounds(9, 405, 120, 15);
-		
 		Label lblUrgencia = new Label(shell, SWT.NONE);
 		lblUrgencia.setText("Nível de urgência");
-		lblUrgencia.setBounds(9, 544, 100, 15);
+		lblUrgencia.setBounds(10, 579, 211, 21);
 		
 		Button btnBaixa = new Button(shell, SWT.RADIO);
 		btnBaixa.setText("Baixa");
-		btnBaixa.setBounds(9, 565, 70, 16);
+		btnBaixa.setBounds(9, 606, 70, 16);
 		
 		Button btnMedia = new Button(shell, SWT.RADIO);
 		btnMedia.setText("Média");
-		btnMedia.setBounds(93, 565, 70, 16);
+		btnMedia.setBounds(93, 606, 70, 16);
 		
 		Button btnAlta = new Button(shell, SWT.RADIO);
 		btnAlta.setText("Alta");
-		btnAlta.setBounds(178, 565, 70, 16);
+		btnAlta.setBounds(178, 606, 70, 16);
 		
 		Button btnConcluir = new Button(shell, SWT.NONE);
 		btnConcluir.setText("Concluir");
