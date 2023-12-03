@@ -13,7 +13,7 @@ Trata-se de um software desenvolido em JAVA focado em facilitar a comunicação 
 </p> 
 
 ## Instruções
-Para o programa funcionar de maneira adequada, é necessário fazer o download de todos os arquivos que se encontram neste github, sem esquecer das pastas: *lib, Estado e Colaborador!*
+Para o programa funcionar de maneira adequada, é necessário fazer o download de todos os arquivos que se encontram neste github, sem esquecer das pastas: **lib, Estado e Colaborador.**
 
 ## Equipe
 
