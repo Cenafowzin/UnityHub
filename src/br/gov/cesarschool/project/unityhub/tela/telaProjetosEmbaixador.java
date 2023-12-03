@@ -78,7 +78,7 @@ public class telaProjetosEmbaixador {
 			public void widgetSelected(SelectionEvent e) {
                 shell.dispose(); // Fecha a janela atual
 
-                telaMenuEmbaixador novaJanela = new telaMenuEmbaixador(logado);
+                TelaMenu novaJanela = new TelaMenu(logado);
                 novaJanela.open(); // Abre a nova janela
             }
 		});

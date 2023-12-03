@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
-public class telaPronto {
+public class TelaPronto {
 
 	protected Shell shell;
 	private Text txtTudoPronto;
@@ -26,7 +26,7 @@ public class telaPronto {
 	 */
 	public static void main(String[] args) {
 		try {
-			telaPronto window = new telaPronto();
+			TelaPronto window = new TelaPronto();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,7 +71,7 @@ public class telaPronto {
 			public void widgetSelected(SelectionEvent e) {
                 shell.dispose(); // Fecha a janela atual
                 // Agora, abra a tela de login
-                telaLoginGeral loginWindow = new telaLoginGeral();
+                TelaLogin loginWindow = new TelaLogin();
                 loginWindow.open(); 
 			}
 		});

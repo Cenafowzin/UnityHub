@@ -18,7 +18,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 
-public class telaCadastroProjeto {
+public class TelaCadastroProjeto {
 	
 	private Colaborador colaborador;
 	protected Shell shell;
@@ -39,7 +39,7 @@ public class telaCadastroProjeto {
 	private Text descricaoTexto;
 	
 	
-	public telaCadastroProjeto(Colaborador colaborador) {
+	public TelaCadastroProjeto(Colaborador colaborador) {
 		this.colaborador = colaborador;
 	}
 	
@@ -195,7 +195,7 @@ public class telaCadastroProjeto {
 					TelaUtils.mostrarMensagemErro(message, shell);
 				}else {
 					shell.dispose();
-					telaPronto doneWindow = new telaPronto();
+					TelaPronto doneWindow = new TelaPronto();
 					doneWindow.open();					
 				}
 				

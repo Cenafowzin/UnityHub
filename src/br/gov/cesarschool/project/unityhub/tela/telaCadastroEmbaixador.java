@@ -208,7 +208,7 @@ public class telaCadastroEmbaixador {
 			public void widgetSelected(SelectionEvent e) {
                 shell.dispose(); // Fecha a janela atual
                 // Agora, abra a tela de login
-                telaLoginGeral loginWindow = new telaLoginGeral();
+                TelaLogin loginWindow = new TelaLogin();
                 loginWindow.open();
 			}
 		});
@@ -244,12 +244,12 @@ public class telaCadastroEmbaixador {
 					}else {
 						if(cargoSelecionado == Cargo.USUARIO) {
 							shell.dispose();
-							telaCadastroProjeto telaProjeto = new telaCadastroProjeto(colaborador);
+							TelaCadastroProjeto telaProjeto = new TelaCadastroProjeto(colaborador);
 							telaProjeto.open();
 							
 						}else {
 							shell.dispose();
-							telaPronto doneWindow = new telaPronto();
+							TelaPronto doneWindow = new TelaPronto();
 							doneWindow.open();			
 						}
 					}

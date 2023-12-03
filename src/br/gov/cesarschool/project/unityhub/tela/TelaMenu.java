@@ -11,12 +11,12 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
-public class telaMenuEmbaixador {
+public class TelaMenu {
 	
 	private Colaborador colaborador;
 	protected Shell shell;
 	
-	public telaMenuEmbaixador(Colaborador colaborador) {
+	public TelaMenu(Colaborador colaborador) {
 		this.colaborador = colaborador;
 	}
 
@@ -26,7 +26,7 @@ public class telaMenuEmbaixador {
 	 */
 	public static void main(String[] args) {
 		try {
-			telaMenuEmbaixador window = new telaMenuEmbaixador(null);
+			TelaMenu window = new TelaMenu(null);
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,9 +59,11 @@ public class telaMenuEmbaixador {
 		
 		Label lblBemVindoEmabaixador = new Label(shell, SWT.CENTER);
 		lblBemVindoEmabaixador.setBounds(140, 45, 168, 27);
-		String[] partesNome = colaborador.getNomeCompleto().split(" ");
-		String primeiroNome = partesNome[0];
-		lblBemVindoEmabaixador.setText("Bem-vindo\n" + primeiroNome);
+		if(colaborador != null) {
+			String[] partesNome = colaborador.getNomeCompleto().split(" ");
+			String primeiroNome = partesNome[0];
+			lblBemVindoEmabaixador.setText("Bem-vindo\n" + primeiroNome);
+		}
 		
 		Button btnGestaoDemanda = new Button(shell, SWT.NONE);
 		btnGestaoDemanda.addSelectionListener(new SelectionAdapter() {
@@ -69,7 +71,7 @@ public class telaMenuEmbaixador {
 			public void widgetSelected(SelectionEvent e) {
 				shell.dispose(); // Fecha a janela atual
 
-                telaGestaoDemanda novaJanela4 = new telaGestaoDemanda();
+                TelaDemanda novaJanela4 = new TelaDemanda();
                 novaJanela4.open(); // Abre a nova janela
 			}
 		});
@@ -95,7 +97,7 @@ public class telaMenuEmbaixador {
 			public void widgetSelected(SelectionEvent e) {
                 shell.dispose(); // Fecha a janela atual
                 // Agora, abra a tela de login
-                telaLoginGeral loginWindow = new telaLoginGeral();
+                TelaLogin loginWindow = new TelaLogin();
                 loginWindow.open(); 
 			}
 		});

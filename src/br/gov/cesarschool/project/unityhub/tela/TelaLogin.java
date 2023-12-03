@@ -16,7 +16,7 @@ import br.gov.cesarschool.project.unityhub.tela.geral.TelaUtils;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 
-public class telaLoginGeral {
+public class TelaLogin {
 
 	protected Shell shell;
 	
@@ -28,7 +28,7 @@ public class telaLoginGeral {
 	 */
 	public static void main(String[] args) {
 		try {
-			telaLoginGeral window = new telaLoginGeral();
+			TelaLogin window = new TelaLogin();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -144,7 +144,7 @@ public class telaLoginGeral {
             			shell.dispose();
             		}else if(colaborador.getCargo() == Cargo.EMBAIXADOR) {
             			shell.dispose();
-            			telaMenuEmbaixador novaJanela = new telaMenuEmbaixador(colaborador);
+            			TelaMenu novaJanela = new TelaMenu(colaborador);
             			novaJanela.open();            			
             		}else {
             			TelaUtils.mostrarMensagemErro("Random", shell);

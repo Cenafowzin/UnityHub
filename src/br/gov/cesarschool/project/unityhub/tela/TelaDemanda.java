@@ -11,7 +11,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
-public class telaGestaoDemanda {
+public class TelaDemanda {
 
 	protected Shell shell;
 
@@ -21,7 +21,7 @@ public class telaGestaoDemanda {
 	 */
 	public static void main(String[] args) {
 		try {
-			telaGestaoDemanda window = new telaGestaoDemanda();
+			TelaDemanda window = new TelaDemanda();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -65,7 +65,7 @@ public class telaGestaoDemanda {
 			public void widgetSelected(SelectionEvent e) {
                 shell.dispose(); // Fecha a janela atual
 
-                telaMenuEmbaixador novaJanela = new telaMenuEmbaixador(null);
+                TelaMenu novaJanela = new TelaMenu(null);
                 novaJanela.open(); // Abre a nova janela
             }
 		});
