@@ -12,6 +12,11 @@ Trata-se de um software desenvolido em JAVA focado em facilitar a comunicação 
   </a>
 </p> 
 
+## Instruções
+1. Para o programa funcionar de maneira adequada, é necessário fazer o download de todos os arquivos que se encontram neste github, sem esquecer das pastas: **lib, Estado e Colaborador.**
+2. Para executar o programa, acessar a pasta **src** e abrir o package **br.gov.cesarschool.project.unityhub.tela**, dentro dele localizar a tela **telaLoginGeral** clickar com o botão direito,em seguida **Run As** e selecionar opção **Java Aplication**.
+
+
 ## Equipe
 
 Diego Arruda - dca2@cesar.school<br/> 
