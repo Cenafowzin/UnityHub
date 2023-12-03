@@ -19,8 +19,7 @@ Trata-se de um software desenvolido em JAVA focado em facilitar a comunicação 
 
  ![image](https://github.com/Cenafowzin/UnityHub/assets/101901740/71adf941-fecf-47af-bf2f-da3a0e6ba2cd)
 
-![image](https://github.com/Cenafowzin/UnityHub/assets/101901740/1d05941a-53df-4bcf-afba-dc0315c29713)
-
+![image](https://github.com/Cenafowzin/UnityHub/assets/101901740/7f895dec-683b-40ee-905f-aabc1fa7a8d3)
 
 ## Equipe
 
