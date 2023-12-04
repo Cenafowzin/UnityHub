@@ -22,8 +22,6 @@ public class Pedido extends Registro{
 		this.dataHoraInicio = dataHoraInicio;
 	}
 	
-	
-
 	public Projeto getProjeto() {
 		return projeto;
 	}

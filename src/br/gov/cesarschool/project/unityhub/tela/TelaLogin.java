@@ -8,6 +8,8 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+
+import br.gov.cesarschool.project.unityhub.entidade.Cargo;
 import br.gov.cesarschool.project.unityhub.entidade.Colaborador;
 import br.gov.cesarschool.project.unityhub.negocio.LoginCadastroMediator;
 import br.gov.cesarschool.project.unityhub.tela.geral.TelaUtils;
@@ -114,9 +116,15 @@ public class TelaLogin {
             	if(message != null) {
             		TelaUtils.mostrarMensagemErro(message, shell);
             	}else {
-            		shell.dispose();
-            		TelaMenu novaJanela = new TelaMenu(colaborador);
-            		novaJanela.open();            			
+            		if(colaborador.getCargo() == Cargo.GERENCIA || colaborador.getCargo() == Cargo.EMBAIXADOR) {
+    					shell.dispose();
+    					TelaMenu novaJanela = new TelaMenu(colaborador);
+    					novaJanela.open();            			
+    				}else if(colaborador.getCargo() == Cargo.USUARIO) {
+    					shell.dispose();
+    					TelaMenuUsuario menuUser= new TelaMenuUsuario(colaborador);
+    					menuUser.open();
+    				}
             	}
             }
         });

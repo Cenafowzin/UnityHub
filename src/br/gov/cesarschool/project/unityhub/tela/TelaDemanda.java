@@ -2,6 +2,8 @@ package br.gov.cesarschool.project.unityhub.tela;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+
+import br.gov.cesarschool.project.unityhub.entidade.Cargo;
 import br.gov.cesarschool.project.unityhub.entidade.Colaborador;
 import br.gov.cesarschool.project.unityhub.entidade.Pedido;
 import br.gov.cesarschool.project.unityhub.negocio.ProjetoMediator;
@@ -15,7 +17,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Label;
 
-public class TelaDemandaGerencia {
+public class TelaDemanda {
 	
 	private Colaborador colaborador;
 	protected Shell shell;
@@ -24,7 +26,7 @@ public class TelaDemandaGerencia {
 	ProjetoMediator mediator = ProjetoMediator.getInstancia();
 	private Composite composite;
 	
-	public TelaDemandaGerencia(Colaborador colaborador) {
+	public TelaDemanda(Colaborador colaborador) {
 		this.colaborador = colaborador;
 	}
 
@@ -34,7 +36,7 @@ public class TelaDemandaGerencia {
 	 */
 	public static void main(String[] args) {
 		try {
-			TelaDemandaGerencia window = new TelaDemandaGerencia(null);
+			TelaDemanda window = new TelaDemanda(null);
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,8 +70,14 @@ public class TelaDemandaGerencia {
 	    composite = new Composite(shell, SWT.NONE);
 	    composite.setLayout(new GridLayout(1, false));
 	    composite.setBounds(10, 100, 430, 418); // Definindo bounds para o composite
-
-	    Pedido[] pedidos = mediator.listarPedidos();
+	    
+	    Pedido[] pedidos = null;
+	    if(colaborador.getCargo() == Cargo.GERENCIA) {
+	    	pedidos = mediator.listarPedidos();	    	
+	    }else if(colaborador.getCargo() == Cargo.EMBAIXADOR) {
+	    	pedidos = mediator.listarPedidosPorEstado(colaborador.getEstado());
+	    }
+	    
 	    if (pedidos != null) {
 	        for (Pedido pedido : pedidos) {
 	            Button btnProjeto = new Button(composite, SWT.NONE);
@@ -78,10 +86,15 @@ public class TelaDemandaGerencia {
 	            btnProjeto.addSelectionListener(new SelectionAdapter() {
 	    			@Override
 	    			public void widgetSelected(SelectionEvent e) {
-	                    shell.dispose(); // Fecha a janela atual
-
-	                    //TelaDetalhesPedido novaJanela = new TelaDetalhesPedido(colaborador,pedido);
-	                    //novaJanela.open(); // Abre a nova janela
+	                    if(colaborador.getCargo() == Cargo.GERENCIA || colaborador.getCargo() == Cargo.EMBAIXADOR) {
+	                    	shell.dispose(); // Fecha a janela atual
+	                    	TelaConcluirPedido telaConcluir = new TelaConcluirPedido(colaborador, pedido);
+	                    	telaConcluir.open();
+	                    }else if(colaborador.getCargo() == Cargo.USUARIO) {
+	                    	shell.dispose(); // Fecha a janela atual
+	                    	TelaDetalhesPedido novaJanela = new TelaDetalhesPedido(colaborador,pedido);
+	                    	novaJanela.open(); // Abre a nova janela	                    	
+	                    }
 	                }
 	    		});
 	        }

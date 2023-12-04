@@ -2,8 +2,6 @@ package br.gov.cesarschool.project.unityhub.tela;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-
-import br.gov.cesarschool.project.unityhub.entidade.Cargo;
 import br.gov.cesarschool.project.unityhub.entidade.Colaborador;
 import br.gov.cesarschool.project.unityhub.tela.geral.TelaUtils;
 import org.eclipse.swt.widgets.Label;
@@ -70,15 +68,9 @@ public class TelaMenu {
 		btnGestaoDemanda.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if(colaborador.getCargo() == Cargo.GERENCIA) {
-					shell.dispose(); // Fecha a janela atual
-					TelaDemandaGerencia novaJanela4 = new TelaDemandaGerencia(colaborador);
-					novaJanela4.open(); // Abre a nova janela					
-				}else if(colaborador.getCargo() == Cargo.EMBAIXADOR) {
-					
-				}else if (colaborador.getCargo() == Cargo.USUARIO) {
-					
-				}
+				shell.dispose(); // Fecha a janela atual
+				TelaDemanda novaJanela4 = new TelaDemanda(colaborador);
+				novaJanela4.open(); // Abre a nova janela
 			}
 		});
 		btnGestaoDemanda.setBounds(136, 223, 177, 30);
@@ -88,13 +80,9 @@ public class TelaMenu {
 		btnGestaoProjetos.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if(colaborador.getCargo() == Cargo.GERENCIA || colaborador.getCargo() == Cargo.EMBAIXADOR) {
-					shell.dispose();					
-					TelaProjetos novaJanela2 = new TelaProjetos(colaborador);
-					novaJanela2.open(); // Abre a nova janela
-				}else if(colaborador.getCargo() == Cargo.USUARIO) {
-					
-				}
+				shell.dispose();					
+				TelaProjetos novaJanela2 = new TelaProjetos(colaborador);
+				novaJanela2.open(); // Abre a nova janela
 			}
 		});
 		btnGestaoProjetos.setBounds(136, 275, 182, 30);
